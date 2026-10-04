@@ -3,28 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BulkMaker PRO - Nutrition Avancée</title>
+    <title>BulkMaker PRO - IA & Nutrition Avancée</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-base: #0b0f19;
             --bg-surface: #111827;
             --bg-card: #1f2937;
-            --primary: #10b981; /* Neon Green */
+            --primary: #10b981;
             --primary-glow: rgba(16, 185, 129, 0.2);
-            --accent: #f59e0b; /* Amber */
+            --accent: #f59e0b;
             --text-main: #f3f4f6;
             --text-dim: #9ca3af;
             --border: #374151;
             --radius: 16px;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Outfit', sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Outfit', sans-serif; }
 
         body {
             background-color: var(--bg-base);
@@ -33,7 +28,6 @@
             padding-bottom: 50px;
         }
 
-        /* Header & Navigation */
         header {
             background-color: var(--bg-surface);
             border-bottom: 1px solid var(--border);
@@ -80,40 +74,24 @@
             box-shadow: 0 0 15px var(--primary-glow);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
+        .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+        .tab-content { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .tab-content.active { display: block; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Layout Grid */
         .layout-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 25px;
         }
-
         @media (min-width: 900px) {
-            .layout-grid {
-                grid-template-columns: 350px 1fr;
-            }
+            .layout-grid { grid-template-columns: 350px 1fr; }
         }
 
-        /* Cards & Forms */
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -133,26 +111,11 @@
             padding-bottom: 10px;
         }
 
-        .form-row {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .form-row .form-group {
-            flex: 1;
-        }
+        .form-row { display: flex; gap: 10px; }
+        .form-row .form-group { flex: 1; }
+        .form-group { margin-bottom: 15px; }
 
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            margin-bottom: 5px;
-        }
-
+        label { display: block; font-size: 0.9rem; color: var(--text-dim); margin-bottom: 5px; }
         input, select {
             width: 100%;
             padding: 12px;
@@ -163,10 +126,7 @@
             font-size: 1rem;
             outline: none;
         }
-
-        input:focus, select:focus {
-            border-color: var(--primary);
-        }
+        input:focus, select:focus { border-color: var(--primary); }
 
         .btn {
             width: 100%;
@@ -182,20 +142,14 @@
             transition: all 0.2s;
             margin-top: 10px;
         }
+        .btn:hover { background: #0ea5e9; box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
 
-        .btn:hover {
-            background: #0ea5e9;
-            box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
-        }
-
-        /* Stats & Jauges */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
             margin-bottom: 25px;
         }
-
         .stat-box {
             background: var(--bg-surface);
             border: 1px solid var(--border);
@@ -203,27 +157,11 @@
             padding: 15px;
             text-align: center;
         }
-
-        .stat-box.highlight {
-            border-color: var(--accent);
-            box-shadow: 0 0 15px rgba(245, 158, 11, 0.1);
-        }
-
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
+        .stat-box.highlight { border-color: var(--accent); box-shadow: 0 0 15px rgba(245, 158, 11, 0.1); }
+        .stat-value { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
         .stat-box.highlight .stat-value { color: var(--accent); }
+        .stat-label { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
 
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Menu de création de repas (Nouveau) */
         .meal-actions-container {
             background: var(--bg-surface);
             border: 1px solid var(--border);
@@ -231,17 +169,10 @@
             padding: 15px;
             margin-bottom: 20px;
         }
-
-        .meal-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
+        .meal-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
         .action-btn {
             flex: 1;
-            min-width: 120px;
+            min-width: 110px;
             background: transparent;
             color: var(--text-main);
             border: 1px solid var(--border);
@@ -251,25 +182,11 @@
             cursor: pointer;
             transition: 0.2s;
         }
-
-        .action-btn:hover {
-            background: var(--border);
-            color: white;
-        }
-        
-        .action-btn.danger {
-            border-color: #ef4444;
-            color: #ef4444;
-        }
+        .action-btn:hover { background: var(--border); color: white; }
+        .action-btn.danger { border-color: #ef4444; color: #ef4444; }
         .action-btn.danger:hover { background: #ef4444; color: white; }
 
-        /* Meal Cards Améliorées */
-        .meals-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
+        .meals-container { display: flex; flex-direction: column; gap: 15px; }
         .meal-card {
             background: var(--bg-surface);
             border-left: 4px solid var(--primary);
@@ -278,30 +195,10 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            position: relative;
         }
-
-        .meal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .meal-title {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .meal-desc {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            font-style: italic;
-        }
-
+        .meal-header { display: flex; justify-content: space-between; align-items: center; }
+        .meal-title { font-size: 1.2rem; font-weight: 800; color: white; display: flex; align-items: center; gap: 10px; }
+        .meal-desc { font-size: 0.9rem; color: var(--text-dim); font-style: italic; }
         .meal-macros {
             font-size: 0.9rem;
             background: rgba(245, 158, 11, 0.1);
@@ -321,7 +218,6 @@
             padding-top: 10px;
             border-top: 1px dashed var(--border);
         }
-
         .ingredients-list li {
             font-size: 0.9rem;
             color: var(--text-dim);
@@ -330,7 +226,6 @@
             padding-right: 15px;
             align-items: center;
         }
-        
         .ingredients-list span.qty {
             color: white;
             font-weight: 600;
@@ -350,17 +245,49 @@
         }
         .btn-small:hover { background: var(--border); color: white; }
         .btn-remove:hover { background: #ef4444; color: white; border-color: #ef4444; }
+        .btn-recipe { border-color: var(--accent); color: var(--accent); }
+        .btn-recipe:hover { background: var(--accent); color: black; }
+
+        /* Modal Recette */
+        #recipeModal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.5rem;
+            color: var(--text-dim);
+            cursor: pointer;
+        }
+        .close-modal:hover { color: white; }
+        .recipe-steps {
+            margin-top: 15px;
+            padding-left: 20px;
+            color: var(--text-dim);
+        }
+        .recipe-steps li { margin-bottom: 10px; font-size: 0.95rem; }
 
         /* Courses & Budget */
-        .shopping-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-        @media (min-width: 800px) {
-            .shopping-grid { grid-template-columns: 1fr 1fr; }
-        }
-
+        .shopping-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 800px) { .shopping-grid { grid-template-columns: 1fr 1fr; } }
         .shopping-item {
             display: flex;
             justify-content: space-between;
@@ -369,7 +296,6 @@
             border-bottom: 1px solid var(--border);
         }
         .shopping-item:last-child { border-bottom: none; }
-
         .budget-display {
             font-size: 1.5rem;
             color: var(--primary);
@@ -381,7 +307,7 @@
             border-radius: var(--radius);
             border: 2px dashed var(--border);
         }
-        
+
         .water-tracker {
             display: flex;
             justify-content: center;
@@ -390,8 +316,7 @@
             flex-wrap: wrap;
         }
         .glass {
-            width: 40px;
-            height: 50px;
+            width: 40px; height: 50px;
             border: 2px solid var(--primary);
             border-radius: 0 0 10px 10px;
             cursor: pointer;
@@ -405,16 +330,15 @@
             bottom: 0; left: 0; right: 0; top: 20%;
             background: var(--primary);
             opacity: 0.8;
-            transition: top 0.3s;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>⚡ BulkMaker PRO</h1>
+        <h1>⚡ BulkMaker PRO <span style="font-size: 1rem; color: var(--accent);">[Générateur IA Infini]</span></h1>
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('repas')">📅 Plan Repas</button>
+            <button class="tab-btn active" onclick="switchTab('repas')">📅 Plan Repas & IA</button>
             <button class="tab-btn" onclick="switchTab('courses')">🛒 Liste Courses</button>
             <button class="tab-btn" onclick="switchTab('hydratation')">💧 Hydratation & Supps</button>
         </div>
@@ -459,24 +383,12 @@
                                 <option value="1.725">Intense (Sport tous les jours)</option>
                             </select>
                         </div>
-                        
-                        <label style="margin-top:15px; display:block;">Régime & Filtres</label>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                            <label style="background:var(--bg-surface); padding:8px 15px; border-radius:20px; font-size:0.9rem; cursor:pointer; display:flex; align-items:center; gap:8px;">
-                                <input type="checkbox" id="pref-vege"> Végétarien
-                            </label>
-                            <label style="background:var(--bg-surface); padding:8px 15px; border-radius:20px; font-size:0.9rem; cursor:pointer; display:flex; align-items:center; gap:8px;">
-                                <input type="checkbox" id="pref-halal"> Halal
-                            </label>
-                        </div>
-
-                        <button type="submit" class="btn">Calculer & Sauvegarder</button>
+                        <button type="submit" class="btn">Mettre à jour</button>
                     </form>
                 </div>
 
                 <!-- Main Area -->
                 <div>
-                    <!-- Objectifs (Kcal, Prot, Glucides) -->
                     <div class="card" style="margin-bottom: 20px;">
                         <h2 class="card-title">🎯 Objectifs Quotidiens</h2>
                         <div class="stats-grid">
@@ -494,94 +406,72 @@
                             </div>
                         </div>
 
-                        <!-- Menu de création "A la carte" -->
+                        <!-- Menu IA / Générateur -->
                         <div class="meal-actions-container">
-                            <p style="font-size: 0.9rem; color: var(--text-dim);">Construis ton menu en ajoutant les repas un par un, ou génère une journée complète d'un coup.</p>
+                            <p style="font-size: 0.9rem; color: var(--text-dim);">L'algorithme IA pioche ou combine des dizaines de combinaisons uniques pour une variété infinie.</p>
                             <div class="meal-actions">
-                                <button class="action-btn" onclick="addMeal('breakfast')">☕ Petit-Déjeuner</button>
-                                <button class="action-btn" onclick="addMeal('main')">🍽️ Vrai Plat (Midi/Soir)</button>
-                                <button class="action-btn" onclick="addMeal('snack')">🥪 Collation</button>
-                                <button class="action-btn" onclick="addMeal('shaker')">🥤 Shaker Gainer</button>
+                                <button class="action-btn" onclick="addAimedMeal('breakfast')">☕ Petit-Déj</button>
+                                <button class="action-btn" onclick="addAimedMeal('main')">🍽️ Plat (Midi/Soir)</button>
+                                <button class="action-btn" onclick="addAimedMeal('snack')">🥪 Collation</button>
+                                <button class="action-btn" onclick="addAimedMeal('shaker')">🥤 Shaker</button>
                             </div>
                             <div class="meal-actions" style="margin-top: 10px;">
-                                <button class="btn" style="background: var(--accent); color: black;" onclick="generateFullDay()">🎲 Générer une journée type</button>
+                                <button class="btn" style="background: var(--accent); color: black;" onclick="generateFullDayAI()">🤖 Générer une journée type par IA</button>
                                 <button class="action-btn danger" onclick="clearMeals()" style="flex: 0 0 auto;">🗑️ Vider</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Affichage des repas -->
                     <div id="mealsContainer" class="meals-container">
                         <div style="text-align:center; padding: 40px; color: var(--text-dim); background: var(--bg-card); border-radius: var(--radius);">
-                            Ton menu est vide. Clique sur les boutons ci-dessus pour ajouter des repas.
+                            Clique sur le générateur IA pour afficher tes repas avec leurs recettes.
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- MODAL RECETTE -->
+        <div id="recipeModal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeRecipeModal()">&times;</span>
+                <h2 id="modalTitle" style="color: var(--primary); margin-bottom: 10px;">Titre de la Recette</h2>
+                <p id="modalDesc" style="color: var(--text-dim); font-style: italic; margin-bottom: 15px;"></p>
+                <h3 style="color: var(--text-main); font-size: 1.1rem; border-bottom: 1px solid var(--border); padding-bottom: 5px;">👨‍🍳 Étapes de préparation :</h3>
+                <ol id="modalSteps" class="recipe-steps"></ol>
             </div>
         </div>
 
         <!-- ONGLET 2 : COURSES -->
         <div id="tab-courses" class="tab-content">
             <div class="card">
-                <h2 class="card-title">🛒 Liste de Courses Automatique</h2>
-                
-                <div style="background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--primary); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                    <p style="color: white; font-weight: 600; margin-bottom: 5px;">Comment ça marche ?</p>
-                    <p style="font-size: 0.9rem; color: var(--text-dim);">
-                        1. Ajoute les repas que tu veux manger dans l'onglet "Plan Repas".<br>
-                        2. Viens ici et choisis pour combien de jours tu veux faire tes courses.<br>
-                        3. L'application calcule toutes les quantités exactes et estime le prix total en supermarché !
-                    </p>
-                </div>
-                
+                <h2 class="card-title">🛒 Liste de Courses Intelligente</h2>
                 <div class="form-group" style="max-width: 300px;">
-                    <label>Je fais mes courses pour :</label>
+                    <label>Faire les courses pour :</label>
                     <select id="shoppingDays" onchange="generateShoppingList()">
                         <option value="1">1 jour</option>
                         <option value="3" selected>3 jours</option>
-                        <option value="5">5 jours (Semaine)</option>
-                        <option value="7">7 jours (Semaine complète)</option>
+                        <option value="7">1 semaine complète</option>
                     </select>
                 </div>
-
                 <div class="budget-display">
                     Budget Estimé : <span id="budgetEst">0.00</span> €
-                    <div style="font-size: 0.9rem; color: var(--text-dim); font-weight: normal; margin-top: 5px;">Prix indicatif basé sur des supermarchés classiques</div>
                 </div>
-
-                <div class="shopping-grid" id="shoppingGrid">
-                    <!-- Liste générée ici -->
-                </div>
+                <div class="shopping-grid" id="shoppingGrid"></div>
             </div>
         </div>
 
-        <!-- ONGLET 3 : HYDRATATION & SUPPS -->
+        <!-- ONGLET 3 : HYDRATATION -->
         <div id="tab-hydratation" class="tab-content">
             <div class="layout-grid">
                 <div class="card">
                     <h2 class="card-title">💧 Suivi Hydratation</h2>
-                    <p style="color: var(--text-dim);">Ton objectif quotidien : <strong style="color: white; font-size:1.2rem;" id="waterTarget">2.5</strong> Litres</p>
-                    
-                    <div class="water-tracker" id="waterTracker">
-                        <!-- Verres générés en JS -->
-                    </div>
-                    <p style="text-align: center; font-size: 0.8rem; color: var(--text-dim);">Chaque verre représente 250ml. Clique dessus quand tu l'as bu !</p>
+                    <p style="color: var(--text-dim);">Objectif : <strong style="color: white; font-size:1.2rem;" id="waterTarget">2.5</strong> Litres</p>
+                    <div class="water-tracker" id="waterTracker"></div>
                 </div>
-
                 <div class="card">
-                    <h2 class="card-title">💊 Les 3 Suppléments Essentiels</h2>
-                    <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--border);">
-                        <h3 style="color: var(--primary); display: flex; justify-content: space-between;">Créatine Monohydrate <span>💰 Pas cher</span></h3>
-                        <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 5px;"><strong>Comment l'utiliser :</strong> 5g par jour, tous les jours (même sans entrainement), avec un grand verre d'eau. <br><strong>Effet :</strong> Augmente la force, l'énergie musculaire et favorise la prise de masse.</p>
-                    </div>
-                    <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--border);">
-                        <h3 style="color: var(--primary); display: flex; justify-content: space-between;">Whey Protein <span>💰 Moyen</span></h3>
-                        <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 5px;"><strong>Comment l'utiliser :</strong> 1 shaker (30g) après le sport, ou en collation. Inutile si tu manges déjà assez de viande/œufs. <br><strong>Effet :</strong> Facilite l'atteinte de ton quota de protéines quotidien.</p>
-                    </div>
-                    <div>
-                        <h3 style="color: var(--primary); display: flex; justify-content: space-between;">Oméga 3 <span>💰 Indispensable</span></h3>
-                        <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 5px;"><strong>Comment l'utiliser :</strong> 2 à 3 gélules au cours de ton repas le plus gras (souvent le soir). <br><strong>Effet :</strong> Protège tes articulations (très important en musculation) et aide à la récupération.</p>
-                    </div>
+                    <h2 class="card-title">💊 Rappel Suppléments</h2>
+                    <p style="color: var(--text-dim); font-size: 0.95rem;">N'oublie pas ta <strong>Créatine</strong> (5g/jour) et tes <strong>Oméga 3</strong> pour booster ta prise de masse et protéger tes articulations !</p>
                 </div>
             </div>
         </div>
@@ -589,41 +479,67 @@
     </div>
 
     <script>
-        // === NOUVELLE BASE DE DONNÉES (Vrais Plats Elaborés) ===
-        const recipesDB = [
-            // PETITS DEJEUNERS
-            { type: "breakfast", weightFactor: 1.0, title: "Omelette Avoine & Banane", desc: "Le classique du bodybuilder. Rapide et bourratif.", priceCat: 2, tags: ["halal", "vege"], 
-              ingredients: [{name: "Oeufs entiers", qty: 3, unit: "u"}, {name: "Flocons d'avoine", qty: 80, unit: "g"}, {name: "Banane", qty: 1, unit: "u"}, {name: "Miel", qty: 15, unit: "g"}] },
-            { type: "breakfast", weightFactor: 1.0, title: "Pancakes Protéinés Maison", desc: "Un délice pour le matin, riche en glucides lents.", priceCat: 2.5, tags: ["halal", "vege"], 
-              ingredients: [{name: "Lait", qty: 100, unit: "ml"}, {name: "Farine ou Avoine mixé", qty: 100, unit: "g"}, {name: "Oeufs", qty: 2, unit: "u"}, {name: "Sirop d'érable", qty: 20, unit: "ml"}] },
-            
-            // VRAIS PLATS (Midi/Soir)
-            { type: "main", weightFactor: 1.5, title: "Poulet Curry Coco & Riz Basmati", desc: "Un plat en sauce délicieux et très dense en calories grâce au lait de coco.", priceCat: 4, tags: ["halal"], 
-              ingredients: [{name: "Blanc de Poulet", qty: 150, unit: "g"}, {name: "Riz Basmati", qty: 120, unit: "g"}, {name: "Lait de coco", qty: 100, unit: "ml"}, {name: "Curry (épice)", qty: 1, unit: "pincée"}, {name: "Poivron", qty: 0.5, unit: "u"}] },
-            { type: "main", weightFactor: 1.5, title: "Chili Con Carne de la Masse", desc: "Extrêmement riche en protéines et glucides. Parfait pour prendre du poids.", priceCat: 4.5, tags: ["halal"], 
-              ingredients: [{name: "Boeuf haché 5%", qty: 150, unit: "g"}, {name: "Haricots Rouges", qty: 200, unit: "g"}, {name: "Riz", qty: 100, unit: "g"}, {name: "Sauce Tomate", qty: 150, unit: "ml"}, {name: "Oignon", qty: 1, unit: "u"}] },
-            { type: "main", weightFactor: 1.5, title: "Pâtes Carbonara Protéinées", desc: "Des pâtes, des œufs, du bacon de dinde... Le repas idéal post-entrainement.", priceCat: 3.5, tags: ["halal"], 
-              ingredients: [{name: "Pâtes crues", qty: 130, unit: "g"}, {name: "Bacon de dinde ou poulet", qty: 100, unit: "g"}, {name: "Oeufs", qty: 2, unit: "u"}, {name: "Parmesan", qty: 30, unit: "g"}, {name: "Crème légère", qty: 50, unit: "ml"}] },
-            { type: "main", weightFactor: 1.5, title: "Burger Maison Boeuf & Avocat", desc: "Qui a dit qu'on ne pouvait pas se faire plaisir en prise de masse ?", priceCat: 5, tags: ["halal"], 
-              ingredients: [{name: "Pain Burger boulanger", qty: 2, unit: "u"}, {name: "Steak haché 15%", qty: 1, unit: "u"}, {name: "Avocat", qty: 0.5, unit: "u"}, {name: "Tranche de Cheddar", qty: 2, unit: "u"}, {name: "Frites de Patate Douce", qty: 150, unit: "g"}] },
-            { type: "main", weightFactor: 1.5, title: "Bowl Saumon Teriyaki & Nouilles", desc: "Excellente source de bons lipides (Oméga 3) pour l'énergie.", priceCat: 6, tags: ["halal", "pesco"], 
-              ingredients: [{name: "Pavé de Saumon", qty: 150, unit: "g"}, {name: "Nouilles Asiatiques", qty: 100, unit: "g"}, {name: "Sauce Teriyaki ou Soja", qty: 20, unit: "ml"}, {name: "Brocolis", qty: 150, unit: "g"}] },
-            { type: "main", weightFactor: 1.5, title: "Tofu Laqué aux Sésames", desc: "Plat 100% végétarien avec une sauce incroyable.", priceCat: 3.5, tags: ["halal", "vege"], 
-              ingredients: [{name: "Tofu ferme", qty: 180, unit: "g"}, {name: "Riz Thai", qty: 120, unit: "g"}, {name: "Graines de sésame", qty: 10, unit: "g"}, {name: "Sauce Soja Sucrée", qty: 20, unit: "ml"}] },
-            
-            // SNACKS & SHAKERS
-            { type: "snack", weightFactor: 0.5, title: "Bowl Fromage Blanc & Amandes", desc: "Une collation saine, pleine de bonnes graisses.", priceCat: 2, tags: ["halal", "vege"], 
-              ingredients: [{name: "Fromage Blanc ou Skyr", qty: 250, unit: "g"}, {name: "Amandes", qty: 40, unit: "g"}, {name: "Chocolat Noir 70%", qty: 20, unit: "g"}] },
-            { type: "snack", weightFactor: 0.5, title: "Tartines Beurre de Cacahuète", desc: "Le secret des prises de masse réussies.", priceCat: 1.5, tags: ["halal", "vege"], 
-              ingredients: [{name: "Pain de mie complet", qty: 4, unit: "tranches"}, {name: "Beurre de Cacahuète", qty: 50, unit: "g"}, {name: "Banane", qty: 1, unit: "u"}] },
-            { type: "shaker", weightFactor: 0.5, title: "Shaker Gainer Maison (Le Monstre)", desc: "1000 kcal liquides à boire facilement entre deux repas.", priceCat: 1.5, tags: ["halal", "vege"], 
-              ingredients: [{name: "Lait entier", qty: 400, unit: "ml"}, {name: "Flocons d'avoine mixés", qty: 100, unit: "g"}, {name: "Beurre de Cacahuète", qty: 40, unit: "g"}, {name: "Whey Protein", qty: 30, unit: "g"}] }
+        // === BASE ÉTENDUE DE COMPOSANTS POUR GÉNÉRATEUR INFINI TYPE IA ===
+        const poolProteins = [
+            { name: "Blanc de Poulet", unit: "g", baseQty: 150, price: 2.2 },
+            { name: "Steak Haché 5% MG", unit: "g", baseQty: 150, price: 2.8 },
+            { name: "Pavé de Saumon", unit: "g", baseQty: 140, price: 4.5 },
+            { name: "Filet de Dinde", unit: "g", baseQty: 150, price: 2.0 },
+            { name: "Thon en boîte au naturel", unit: "g", baseQty: 130, price: 1.8 },
+            { name: "Steak de Soja / Tofu ferme", unit: "g", baseQty: 160, price: 2.2 },
+            { name: "Œufs entiers", unit: "u", baseQty: 3, price: 1.0 }
+        ];
+
+        const poolCarbs = [
+            { name: "Riz Basmati", unit: "g", baseQty: 110, price: 0.4 },
+            { name: "Pâtes Complètes", unit: "g", baseQty: 120, price: 0.4 },
+            { name: "Patates Douces", unit: "g", baseQty: 250, price: 1.2 },
+            { name: "Quinoa", unit: "g", baseQty: 100, price: 1.0 },
+            { name: "Semoule de Blé", unit: "g", baseQty: 110, price: 0.4 },
+            { name: "Gnocchis poêlés", unit: "g", baseQty: 200, price: 1.5 }
+        ];
+
+        const poolVeggies = [
+            { name: "Brocolis vapeur", unit: "g", baseQty: 130, price: 1.0 },
+            { name: "Haricots verts", unit: "g", baseQty: 130, price: 0.9 },
+            { name: "Poêlée de poivrons & oignons", unit: "g", baseQty: 120, price: 1.1 },
+            { name: "Épinards frais", unit: "g", baseQty: 100, price: 1.2 }
+        ];
+
+        const poolSaucesFats = [
+            { name: "Huile d'olive", unit: "ml", baseQty: 15, price: 0.3 },
+            { name: "Lait de coco", unit: "ml", baseQty: 80, price: 0.8 },
+            { name: "Crème fraîche épaisse", unit: "g", baseQty: 40, price: 0.6 },
+            { name: "Sauce Soja & Cacahuètes", unit: "g", baseQty: 20, price: 0.5 }
+        ];
+
+        const breakfastsDB = [
+            { title: "Omelette Royale Avoine & Banane", desc: "Le carburant parfait du matin pour lancer la journée de prise de masse.", price: 2.0, kcal: 650,
+              ingredients: [{name: "Œufs entiers", qty: 3, unit: "u"}, {name: "Flocons d'avoine", qty: 80, unit: "g"}, {name: "Banane", qty: 1, unit: "u"}, {name: "Miel", qty: 15, unit: "g"}],
+              steps: ["Battre les œufs dans un bol avec les flocons d'avoine.", "Verser le tout dans une poêle chaude huilée.", "Faire cuire 3 min de chaque côté.", "Servir coupé en morceaux avec la banane et un filet de miel."] },
+            { title: "Pancakes Mass Flocons & Protéines", desc: "Moelleux, délicieux et denses en glucides lents.", price: 2.5, kcal: 700,
+              ingredients: [{name: "Lait entier", qty: 120, unit: "ml"}, {name: "Farine d'avoine", qty: 90, unit: "g"}, {name: "Œufs", qty: 2, unit: "u"}, {name: "Sirop d'érable", qty: 20, unit: "ml"}],
+              steps: ["Mixer tous les ingrédients ensemble pour obtenir une pâte homogène.", "Faire cuire de petites louches dans une poêle anti-adhésive.", "Empiler les pancakes et napper de sirop d'érable."] }
+        ];
+
+        const snacksDB = [
+            { title: "Bowl Skyr, Amandes & Chocolat", desc: "Riche en protéines lentes et en bonnes graisses.", price: 2.2, kcal: 450,
+              ingredients: [{name: "Skyr nature", qty: 250, unit: "g"}, {name: "Amandes", qty: 35, unit: "g"}, {name: "Chocolat noir 70%", qty: 20, unit: "g"}],
+              steps: ["Verser le Skyr dans un bol.", "Ajouter les amandes concassées et les carrés de chocolat noir.", "Déguster bien frais."] },
+            { title: "Tartines XXL Beurre de Cacahuète", desc: "L'arme secrète calorique pour avaler des calories facilement.", price: 1.8, kcal: 500,
+              ingredients: [{name: "Pain de mie complet", qty: 4, unit: "tranches"}, {name: "Beurre de cacahuète", qty: 50, unit: "g"}, {name: "Banane", qty: 1, unit: "u"}],
+              steps: ["Faire toaster les tranches de pain de mie.", "Étaler généreusement le beurre de cacahuète.", "Disposer des rondelles de bananes par-dessus."] }
+        ];
+
+        const shakersDB = [
+            { title: "Shaker Gainer Maison Ultra-Mass", desc: "1000 kcal liquides avalées en 2 minutes chrono.", price: 1.8, kcal: 950,
+              ingredients: [{name: "Lait entier", qty: 400, unit: "ml"}, {name: "Avoine en poudre", qty: 100, unit: "g"}, {name: "Beurre de cacahuète", qty: 40, unit: "g"}, {name: "Whey protéine", qty: 30, unit: "g"}],
+              steps: ["Mettre le liquide d'abord dans le shaker ou le blender.", "Ajouter la poudre d'avoine, la whey et le beurre de cacahuète.", "Mixer vigoureusement pendant 30 secondes."] }
         ];
 
         let currentUser = { tdee: 2600, protein: 130, carbs: 350, weight: 60 };
-        let currentDayMeals = []; // Stocke les repas générés manuellement ou automatiquement
+        let currentDayMeals = [];
 
-        // === INITIALISATION ===
         window.onload = () => {
             if(localStorage.getItem('bm_weight')) {
                 document.getElementById('weight').value = localStorage.getItem('bm_weight');
@@ -631,212 +547,199 @@
                 document.getElementById('height').value = localStorage.getItem('bm_height');
                 document.getElementById('age').value = localStorage.getItem('bm_age');
                 document.getElementById('activity').value = localStorage.getItem('bm_activity');
-                
-                document.getElementById('pref-vege').checked = localStorage.getItem('bm_vege') === 'true';
-                document.getElementById('pref-halal').checked = localStorage.getItem('bm_halal') === 'true';
             }
             calculateMacros();
         };
 
-        // === GESTION DES ONGLETS ===
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            
             event.currentTarget.classList.add('active');
             document.getElementById('tab-' + tabId).classList.add('active');
-
             if(tabId === 'courses') generateShoppingList();
         }
 
-        // === CALCUL MACROS ===
         document.getElementById('profileForm').addEventListener('submit', function(e) {
             e.preventDefault();
             calculateMacros();
-            
             localStorage.setItem('bm_weight', document.getElementById('weight').value);
             localStorage.setItem('bm_target', document.getElementById('targetWeight').value);
             localStorage.setItem('bm_height', document.getElementById('height').value);
             localStorage.setItem('bm_age', document.getElementById('age').value);
             localStorage.setItem('bm_activity', document.getElementById('activity').value);
-            localStorage.setItem('bm_vege', document.getElementById('pref-vege').checked);
-            localStorage.setItem('bm_halal', document.getElementById('pref-halal').checked);
-
-            if(currentDayMeals.length > 0) renderMeals(); // Met à jour les quantités des repas actuels
-            alert("Profil et Objectifs mis à jour !");
+            if(currentDayMeals.length > 0) renderMeals();
+            alert("Profil mis à jour !");
         });
 
         function calculateMacros() {
             const weight = parseFloat(document.getElementById('weight').value);
-            const target = parseFloat(document.getElementById('targetWeight').value);
             const height = parseFloat(document.getElementById('height').value);
             const age = parseInt(document.getElementById('age').value);
             const activity = parseFloat(document.getElementById('activity').value);
-
-            // BMR de base
             let bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
-            
-            // Calcul du surplus basé sur la différence de poids souhaitée
-            let surplus = 300; // base
-            if (target > weight) surplus = 500; // Si on veut grossir, +500 kcal d'office
-            
-            const tdee = Math.round((bmr * activity) + surplus);
+            const tdee = Math.round((bmr * activity) + 500); // Surplus prise de masse
             
             currentUser.tdee = tdee;
             currentUser.weight = weight;
-            currentUser.protein = Math.round(weight * 2.2); // 2.2g par kilo
-            currentUser.carbs = Math.round((tdee * 0.45) / 4); // Reste des calories en glucides
+            currentUser.protein = Math.round(weight * 2.2);
+            currentUser.carbs = Math.round((tdee * 0.45) / 4);
 
             document.getElementById('targetKcal').innerText = tdee;
             document.getElementById('targetProtein').innerText = currentUser.protein + 'g';
             document.getElementById('targetCarbs').innerText = currentUser.carbs + 'g';
-            
-            // Eau : ~40ml par kg
-            const water = (weight * 0.04).toFixed(1);
-            document.getElementById('waterTarget').innerText = water;
+            document.getElementById('waterTarget').innerText = (weight * 0.04).toFixed(1);
             setupWaterTracker(weight);
         }
 
-        // === SYSTEME DE REPAS "A LA CARTE" ===
-        
-        function filterRecipes() {
-            const isVege = document.getElementById('pref-vege').checked;
-            const isHalal = document.getElementById('pref-halal').checked;
-            return recipesDB.filter(r => {
-                if(isVege && !r.tags.includes('vege')) return false;
-                if(isHalal && !r.tags.includes('halal')) return false;
-                return true;
-            });
+        // === IA GENERATOR (Génère des plats uniques à l'infini) ===
+        function generateAIMainDish() {
+            const prot = poolProteins[Math.floor(Math.random() * poolProteins.length)];
+            const carb = poolCarbs[Math.floor(Math.random() * poolCarbs.length)];
+            const veg = poolVeggies[Math.floor(Math.random() * poolVeggies.length)];
+            const fat = poolSaucesFats[Math.floor(Math.random() * poolSaucesFats.length)];
+
+            const titles = [
+                `Poêlée ${prot.name} & ${carb.name} façon Chef`,
+                `Bowl Énergétique ${prot.name} avec ${veg.name}`,
+                `Assiette Mass ${carb.name}, ${prot.name} & ${fat.name}`,
+                `Mix Muscu : ${prot.name} et ses ${carb.name}`
+            ];
+            const title = titles[Math.floor(Math.random() * titles.length)];
+
+            return {
+                type: "main",
+                weightFactor: 1.5,
+                title: title,
+                desc: "Plat généré par l'IA combinant des macronutriments parfaits pour la prise de masse.",
+                price: prot.price + carb.price + veg.price + fat.price,
+                kcal: 800,
+                ingredients: [
+                    { name: prot.name, qty: prot.baseQty, unit: prot.unit },
+                    { name: carb.name, qty: carb.baseQty, unit: carb.unit },
+                    { name: veg.name, qty: veg.baseQty, unit: veg.unit },
+                    { name: fat.name, qty: fat.baseQty, unit: fat.unit }
+                ],
+                steps: [
+                    `Faire cuire le ${carb.name} dans de l'eau bouillante salée selon le temps indiqué.`,
+                    `Dans une poêle, faire chauffer le ${fat.name} et faire saisir le ${prot.name} jusqu'à dorure complète.`,
+                    `Faire réchauffer les ${veg.name} à côté ou directement dans la poêle.`,
+                    `Dresser le tout dans une grande assiette et assaisonner selon vos goûts.`
+                ]
+            };
         }
 
-        function addMeal(type) {
-            const valid = filterRecipes().filter(r => r.type === type);
-            if(valid.length === 0) {
-                alert("Aucun repas de ce type ne correspond à tes filtres (Végétarien/Halal).");
-                return;
+        function addAimedMeal(type) {
+            let meal;
+            if(type === 'breakfast') {
+                meal = JSON.parse(JSON.stringify(breakfastsDB[Math.floor(Math.random() * breakfastsDB.length)]));
+            } else if(type === 'snack') {
+                meal = JSON.parse(JSON.stringify(snacksDB[Math.floor(Math.random() * snacksDB.length)]));
+            } else if(type === 'shaker') {
+                meal = JSON.parse(JSON.stringify(shakersDB[Math.floor(Math.random() * shakersDB.length)]));
+            } else {
+                meal = generateAIMainDish();
             }
-            const randomMeal = valid[Math.floor(Math.random() * valid.length)];
-            currentDayMeals.push(JSON.parse(JSON.stringify(randomMeal))); // Clone l'objet
+            meal.type = type;
+            currentDayMeals.push(meal);
             renderMeals();
         }
 
-        function removeMeal(index) {
-            currentDayMeals.splice(index, 1);
-            renderMeals();
-        }
-
-        function clearMeals() {
+        function generateFullDayAI() {
             currentDayMeals = [];
-            renderMeals();
+            addAimedMeal('breakfast');
+            addAimedMeal('main');
+            addAimedMeal('snack');
+            addAimedMeal('main');
+            addAimedMeal('shaker');
         }
 
-        function generateFullDay() {
-            currentDayMeals = []; // On vide
-            addMeal('breakfast');
-            addMeal('main'); // Midi
-            addMeal('snack'); // Gouter
-            addMeal('main'); // Soir
-        }
+        function removeMeal(index) { currentDayMeals.splice(index, 1); renderMeals(); }
+        function clearMeals() { currentDayMeals = []; renderMeals(); }
 
-        function replaceMeal(index) {
-            const typeToReplace = currentDayMeals[index].type;
-            const valid = filterRecipes().filter(r => r.type === typeToReplace);
-            const randomMeal = valid[Math.floor(Math.random() * valid.length)];
-            currentDayMeals[index] = JSON.parse(JSON.stringify(randomMeal));
-            renderMeals();
-        }
-
-        // Calcule les quantités proportionnellement à l'objectif Kcal
         function renderMeals() {
             const container = document.getElementById('mealsContainer');
-            
             if(currentDayMeals.length === 0) {
-                container.innerHTML = '<div style="text-align:center; padding: 40px; color: var(--text-dim); background: var(--bg-card); border-radius: var(--radius);">Ton menu est vide. Ajoute des repas via les boutons au-dessus.</div>';
+                container.innerHTML = '<div style="text-align:center; padding: 40px; color: var(--text-dim); background: var(--bg-card); border-radius: var(--radius);">Ton menu est vide. Utilise les boutons IA pour générer tes repas.</div>';
                 return;
             }
 
             container.innerHTML = '';
-            
-            // Calcul du "poids" total des repas pour répartir intelligemment les calories
-            // Un vrai plat (weight: 1.5) aura plus de calories et de quantités qu'un snack (weight: 0.5)
-            let totalWeightFactor = currentDayMeals.reduce((sum, meal) => sum + meal.weightFactor, 0);
+            let totalWeightFactor = currentDayMeals.reduce((sum, m) => sum + (m.weightFactor || 1.0), 0);
 
             currentDayMeals.forEach((meal, index) => {
-                
-                // Kcal allouées à CE repas précis, selon le total de la journée
-                let mealKcal = Math.round(currentUser.tdee * (meal.weightFactor / totalWeightFactor));
-                
-                // Multiplicateur pour ajuster les ingrédients de base de la recette au besoin calorique du repas
-                // (On estime qu'une portion de base fait environ 700 kcal)
-                const basePortionKcal = 700; 
-                let qtyMultiplier = mealKcal / basePortionKcal;
+                let mealKcal = Math.round(currentUser.tdee * ((meal.weightFactor || 1.0) / totalWeightFactor));
+                let mult = mealKcal / (meal.kcal || 700);
 
                 let ingsHTML = '';
                 meal.ingredients.forEach(ing => {
-                    let finalQty = (ing.qty * qtyMultiplier);
-                    
-                    // Arrondis propres
-                    if (ing.unit === 'u' || ing.unit === 'tranches' || ing.unit === 'pincée') {
-                        finalQty = Math.max(1, Math.round(finalQty)); // Ne jamais avoir 0 oeuf
-                    } else {
-                        finalQty = Math.round(finalQty / 5) * 5; // Arrondir aux 5g ou 5ml près
-                    }
-
-                    ingsHTML += `<li>${ing.name} <span class="qty">${finalQty} ${ing.unit}</span></li>`;
-                    
-                    // On stocke la quantité calculée pour la liste de courses
-                    ing.calculatedQty = finalQty; 
+                    let fQty = ing.qty * mult;
+                    if(ing.unit === 'u') fQty = Math.max(1, Math.round(fQty));
+                    else fQty = Math.round(fQty / 5) * 5;
+                    ingsHTML += `<li>${ing.name} <span class="qty">${fQty} ${ing.unit}</span></li>`;
+                    ing.calcQty = fQty;
                 });
-                
-                // Prix estimé du repas
-                meal.calculatedPrice = meal.priceCat * qtyMultiplier;
+
+                meal.calcPrice = (meal.price || 3) * mult;
 
                 let icon = meal.type === 'breakfast' ? '☕' : (meal.type === 'main' ? '🍽️' : (meal.type === 'shaker' ? '🥤' : '🥪'));
 
-                const html = `
+                container.innerHTML += `
                     <div class="meal-card">
                         <div class="meal-header">
                             <span class="meal-title">${icon} ${meal.title}</span>
                             <div>
-                                <button class="btn-small" onclick="replaceMeal(${index})">🔄 Remplacer</button>
+                                <button class="btn-small btn-recipe" onclick='openRecipe(${index})'>📖 Recette</button>
                                 <button class="btn-small btn-remove" onclick="removeMeal(${index})">❌</button>
                             </div>
                         </div>
                         <div class="meal-desc">${meal.desc}</div>
-                        <div class="meal-macros">🔥 Apporte environ ${mealKcal} Kcal</div>
+                        <div class="meal-macros">🔥 ~ ${mealKcal} Kcal</div>
                         <ul class="ingredients-list">${ingsHTML}</ul>
                     </div>
                 `;
-                container.innerHTML += html;
             });
         }
 
-        // === LISTE DE COURSES SIMPLIFIEE ET JUSTE ===
+        // === MODAL RECETTE ===
+        function openRecipe(index) {
+            const meal = currentDayMeals[index];
+            document.getElementById('modalTitle').innerText = meal.title;
+            document.getElementById('modalDesc').innerText = meal.desc;
+            
+            const stepsList = document.getElementById('modalSteps');
+            stepsList.innerHTML = '';
+            if(meal.steps && meal.steps.length > 0) {
+                meal.steps.forEach(step => {
+                    stepsList.innerHTML += `<li>${step}</li>`;
+                });
+            } else {
+                stepsList.innerHTML = `<li>Mélanger tous les ingredients et consommer frais ou après cuisson rapide.</li>`;
+            }
+            document.getElementById('recipeModal').style.display = 'flex';
+        }
+
+        function closeRecipeModal() {
+            document.getElementById('recipeModal').style.display = 'none';
+        }
+
+        // === COURSES ===
         function generateShoppingList() {
             if(currentDayMeals.length === 0) {
-                document.getElementById('shoppingGrid').innerHTML = '<p style="color:var(--text-dim)">Ajoute d\'abord des repas dans l\'onglet "Plan Repas".</p>';
+                document.getElementById('shoppingGrid').innerHTML = '<p style="color:var(--text-dim)">Génère d\'abord des repas.</p>';
                 document.getElementById('budgetEst').innerText = '0.00';
                 return;
             }
 
             const days = parseInt(document.getElementById('shoppingDays').value);
-            
             let groceryMap = {};
             let totalBudget = 0;
 
             currentDayMeals.forEach(meal => {
-                totalBudget += (meal.calculatedPrice || meal.priceCat);
-                
+                totalBudget += (meal.calcPrice || 2.5);
                 meal.ingredients.forEach(ing => {
-                    // On utilise la quantité calculée lors du rendu, ou la quantité de base en secours
-                    let dailyQty = ing.calculatedQty || ing.qty; 
-                    let totalQty = dailyQty * days;
-                    
-                    if(groceryMap[ing.name]) {
-                        groceryMap[ing.name].qty += totalQty;
-                    } else {
-                        groceryMap[ing.name] = { qty: totalQty, unit: ing.unit };
-                    }
+                    let q = (ing.calcQty || ing.qty) * days;
+                    if(groceryMap[ing.name]) groceryMap[ing.name].qty += q;
+                    else groceryMap[ing.name] = { qty: q, unit: ing.unit };
                 });
             });
 
@@ -859,19 +762,16 @@
 
         // === HYDRATATION ===
         function setupWaterTracker(weight) {
-            const liters = (weight * 0.04);
-            const glassesCount = Math.ceil((liters * 1000) / 250); // 1 verre = 250ml
+            const glasses = Math.ceil((weight * 0.04 * 1000) / 250);
             const tracker = document.getElementById('waterTracker');
             tracker.innerHTML = '';
-            
-            for(let i=0; i<glassesCount; i++) {
-                const glass = document.createElement('div');
-                glass.className = 'glass';
-                glass.onclick = function() { this.classList.toggle('full'); };
-                tracker.appendChild(glass);
+            for(let i=0; i<glasses; i++) {
+                const g = document.createElement('div');
+                g.className = 'glass';
+                g.onclick = function() { this.classList.toggle('full'); };
+                tracker.appendChild(g);
             }
         }
-
     </script>
 </body>
 </html>
