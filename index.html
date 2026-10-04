@@ -247,6 +247,8 @@
         .btn-remove:hover { background: #ef4444; color: white; border-color: #ef4444; }
         .btn-recipe { border-color: var(--accent); color: var(--accent); }
         .btn-recipe:hover { background: var(--accent); color: black; }
+        .btn-reroll { border-color: var(--primary); color: var(--primary); }
+        .btn-reroll:hover { background: var(--primary); color: black; }
 
         /* Modal Recette */
         #recipeModal {
@@ -408,7 +410,7 @@
 
                         <!-- Menu IA / Générateur -->
                         <div class="meal-actions-container">
-                            <p style="font-size: 0.9rem; color: var(--text-dim);">L'algorithme IA pioche ou combine des dizaines de combinaisons uniques pour une variété infinie.</p>
+                            <p style="font-size: 0.9rem; color: var(--text-dim);">L'algorithme IA assemble à l'infini des variantes variées pour ne jamais manger la même chose.</p>
                             <div class="meal-actions">
                                 <button class="action-btn" onclick="addAimedMeal('breakfast')">☕ Petit-Déj</button>
                                 <button class="action-btn" onclick="addAimedMeal('main')">🍽️ Plat (Midi/Soir)</button>
@@ -476,10 +478,10 @@
             </div>
         </div>
 
-    </div>
+</div>
 
     <script>
-        // === BASE ÉTENDUE DE COMPOSANTS POUR GÉNÉRATEUR INFINI TYPE IA ===
+        // === BASES ÉTENDUES DE COMPOSANTS (DIVERSITÉ INFINIE) ===
         const poolProteins = [
             { name: "Blanc de Poulet", unit: "g", baseQty: 150, price: 2.2 },
             { name: "Steak Haché 5% MG", unit: "g", baseQty: 150, price: 2.8 },
@@ -487,7 +489,9 @@
             { name: "Filet de Dinde", unit: "g", baseQty: 150, price: 2.0 },
             { name: "Thon en boîte au naturel", unit: "g", baseQty: 130, price: 1.8 },
             { name: "Steak de Soja / Tofu ferme", unit: "g", baseQty: 160, price: 2.2 },
-            { name: "Œufs entiers", unit: "u", baseQty: 3, price: 1.0 }
+            { name: "Œufs entiers", unit: "u", baseQty: 3, price: 1.0 },
+            { name: "Pavé de Cabillaud", unit: "g", baseQty: 160, price: 3.5 },
+            { name: "Steak de Haché Végétal", unit: "g", baseQty: 150, price: 3.0 }
         ];
 
         const poolCarbs = [
@@ -496,45 +500,65 @@
             { name: "Patates Douces", unit: "g", baseQty: 250, price: 1.2 },
             { name: "Quinoa", unit: "g", baseQty: 100, price: 1.0 },
             { name: "Semoule de Blé", unit: "g", baseQty: 110, price: 0.4 },
-            { name: "Gnocchis poêlés", unit: "g", baseQty: 200, price: 1.5 }
+            { name: "Gnocchis poêlés", unit: "g", baseQty: 200, price: 1.5 },
+            { name: "Riz Complet", unit: "g", baseQty: 110, price: 0.5 },
+            { name: "Purée de pommes de terre maison", unit: "g", baseQty: 250, price: 0.8 }
         ];
 
         const poolVeggies = [
             { name: "Brocolis vapeur", unit: "g", baseQty: 130, price: 1.0 },
             { name: "Haricots verts", unit: "g", baseQty: 130, price: 0.9 },
             { name: "Poêlée de poivrons & oignons", unit: "g", baseQty: 120, price: 1.1 },
-            { name: "Épinards frais", unit: "g", baseQty: 100, price: 1.2 }
+            { name: "Épinards frais", unit: "g", baseQty: 100, price: 1.2 },
+            { name: "Courgettes poêlées aux herbes", unit: "g", baseQty: 150, price: 1.0 },
+            { name: "Carottes fondantes", unit: "g", baseQty: 130, price: 0.8 }
         ];
 
         const poolSaucesFats = [
             { name: "Huile d'olive", unit: "ml", baseQty: 15, price: 0.3 },
             { name: "Lait de coco", unit: "ml", baseQty: 80, price: 0.8 },
             { name: "Crème fraîche épaisse", unit: "g", baseQty: 40, price: 0.6 },
-            { name: "Sauce Soja & Cacahuètes", unit: "g", baseQty: 20, price: 0.5 }
+            { name: "Sauce Soja & Cacahuètes", unit: "g", baseQty: 20, price: 0.5 },
+            { name: "Huile de Colza", unit: "ml", baseQty: 15, price: 0.2 },
+            { name: "Beurre de cacahuète", unit: "g", baseQty: 20, price: 0.4 }
         ];
 
-        const breakfastsDB = [
-            { title: "Omelette Royale Avoine & Banane", desc: "Le carburant parfait du matin pour lancer la journée de prise de masse.", price: 2.0, kcal: 650,
-              ingredients: [{name: "Œufs entiers", qty: 3, unit: "u"}, {name: "Flocons d'avoine", qty: 80, unit: "g"}, {name: "Banane", qty: 1, unit: "u"}, {name: "Miel", qty: 15, unit: "g"}],
-              steps: ["Battre les œufs dans un bol avec les flocons d'avoine.", "Verser le tout dans une poêle chaude huilée.", "Faire cuire 3 min de chaque côté.", "Servir coupé en morceaux avec la banane et un filet de miel."] },
-            { title: "Pancakes Mass Flocons & Protéines", desc: "Moelleux, délicieux et denses en glucides lents.", price: 2.5, kcal: 700,
-              ingredients: [{name: "Lait entier", qty: 120, unit: "ml"}, {name: "Farine d'avoine", qty: 90, unit: "g"}, {name: "Œufs", qty: 2, unit: "u"}, {name: "Sirop d'érable", qty: 20, unit: "ml"}],
-              steps: ["Mixer tous les ingrédients ensemble pour obtenir une pâte homogène.", "Faire cuire de petites louches dans une poêle anti-adhésive.", "Empiler les pancakes et napper de sirop d'érable."] }
+        const poolBreakfastBases = [
+            { name: "Flocons d'avoine", unit: "g", baseQty: 80, price: 0.3 },
+            { name: "Muesli croustillant chocolat", unit: "g", baseQty: 80, price: 0.6 },
+            { name: "Farine d'avoine", unit: "g", baseQty: 90, price: 0.4 },
+            { name: "Pain de mie complet", unit: "g", baseQty: 100, price: 0.5 }
         ];
 
-        const snacksDB = [
+        const poolBreakfastProts = [
+            { name: "Œufs entiers", unit: "u", baseQty: 3, price: 1.0 },
+            { name: "Fromage Blanc 0%", unit: "g", baseQty: 250, price: 1.2 },
+            { name: "Skyr nature", unit: "g", baseQty: 250, price: 1.5 },
+            { name: "Whey protéine en poudre", unit: "g", baseQty: 30, price: 1.0 }
+        ];
+
+        const poolSnacks = [
             { title: "Bowl Skyr, Amandes & Chocolat", desc: "Riche en protéines lentes et en bonnes graisses.", price: 2.2, kcal: 450,
               ingredients: [{name: "Skyr nature", qty: 250, unit: "g"}, {name: "Amandes", qty: 35, unit: "g"}, {name: "Chocolat noir 70%", qty: 20, unit: "g"}],
               steps: ["Verser le Skyr dans un bol.", "Ajouter les amandes concassées et les carrés de chocolat noir.", "Déguster bien frais."] },
-            { title: "Tartines XXL Beurre de Cacahuète", desc: "L'arme secrète calorique pour avaler des calories facilement.", price: 1.8, kcal: 500,
-              ingredients: [{name: "Pain de mie complet", qty: 4, unit: "tranches"}, {name: "Beurre de cacahuète", qty: 50, unit: "g"}, {name: "Banane", qty: 1, unit: "u"}],
-              steps: ["Faire toaster les tranches de pain de mie.", "Étaler généreusement le beurre de cacahuète.", "Disposer des rondelles de bananes par-dessus."] }
+            { title: "Tartines XXL Beurre de Cacahuète & Banane", desc: "L'arme secrète calorique pour avaler des calories facilement.", price: 1.8, kcal: 500,
+              ingredients: [{name: "Pain de mie complet", qty: 100, unit: "g"}, {name: "Beurre de cacahuète", qty: 50, unit: "g"}, {name: "Banane", qty: 1, unit: "u"}],
+              steps: ["Faire toaster les tranches de pain de mie.", "Étaler généreusement le beurre de cacahuète.", "Disposer des rondelles de bananes par-dessus."] },
+            { title: "Smoothie Bowl Énergétique Fruits Rouges", desc: "Frais, vitaminé et dense en glucides propres.", price: 2.5, kcal: 420,
+              ingredients: [{name: "Lait entier", qty: 200, unit: "ml"}, {name: "Flocons d'avoine", qty: 50, unit: "g"}, {name: "Fruits rouges surgelés", qty: 100, unit: "g"}, {name: "Beurre de cacahuète", qty: 20, unit: "g"}],
+              steps: ["Mixer tous les ingrédients dans un blender puissant jusqu'à texture onctueuse.", "Verser dans un bol et ajouter quelques fruits par-dessus."] },
+            { title: "Porridge Express Noix & Miel", desc: "Idéal pour une collation de pré ou post-entraînement.", price: 1.5, kcal: 460,
+              ingredients: [{name: "Flocons d'avoine", qty: 70, unit: "g"}, {name: "Lait entier", qty: 250, unit: "ml"}, {name: "Miel", qty: 20, unit: "g"}, {name: "Cerneaux de noix", qty: 20, unit: "g"}],
+              steps: ["Chauffer le lait et les flocons d'avoine au micro-ondes pendant 2 minutes.", "Mélanger vigoureusement.", "Ajouter le miel et les noix concassées."] }
         ];
 
-        const shakersDB = [
+        const poolShakers = [
             { title: "Shaker Gainer Maison Ultra-Mass", desc: "1000 kcal liquides avalées en 2 minutes chrono.", price: 1.8, kcal: 950,
               ingredients: [{name: "Lait entier", qty: 400, unit: "ml"}, {name: "Avoine en poudre", qty: 100, unit: "g"}, {name: "Beurre de cacahuète", qty: 40, unit: "g"}, {name: "Whey protéine", qty: 30, unit: "g"}],
-              steps: ["Mettre le liquide d'abord dans le shaker ou le blender.", "Ajouter la poudre d'avoine, la whey et le beurre de cacahuète.", "Mixer vigoureusement pendant 30 secondes."] }
+              steps: ["Mettre le liquide d'abord dans le shaker ou le blender.", "Ajouter la poudre d'avoine, la whey et le beurre de cacahuète.", "Mixer vigoureusement pendant 30 secondes."] },
+            { title: "Shaker Chocolat & Beurre d'Amande", desc: "Alternative onctueuse et riche en lipides de qualité.", price: 2.1, kcal: 880,
+              ingredients: [{name: "Lait entier", qty: 400, unit: "ml"}, {name: "Flocons d'avoine", qty: 90, unit: "g"}, {name: "Purée d'amande", qty: 35, unit: "g"}, {name: "Chocolat en poudre (ou cacao)", qty: 20, unit: "g"}],
+              steps: ["Verser le lait dans le mixeur.", "Ajouter l'avoine, la purée d'amande et le cacao.", "Mixer jusqu'à l'obtention d'un mélange parfaitement homogène."] }
         ];
 
         let currentUser = { tdee: 2600, protein: 130, carbs: 350, weight: 60 };
@@ -591,7 +615,7 @@
             setupWaterTracker(weight);
         }
 
-        // === IA GENERATOR (Génère des plats uniques à l'infini) ===
+        // === GÉNÉRATEURS IA COMBINATOIRES INFINIS ===
         function generateAIMainDish() {
             const prot = poolProteins[Math.floor(Math.random() * poolProteins.length)];
             const carb = poolCarbs[Math.floor(Math.random() * poolCarbs.length)];
@@ -602,7 +626,8 @@
                 `Poêlée ${prot.name} & ${carb.name} façon Chef`,
                 `Bowl Énergétique ${prot.name} avec ${veg.name}`,
                 `Assiette Mass ${carb.name}, ${prot.name} & ${fat.name}`,
-                `Mix Muscu : ${prot.name} et ses ${carb.name}`
+                `Mix Muscu : ${prot.name} et ses ${carb.name}`,
+                `Assiette Gourmande ${prot.name} et ${carb.name}`
             ];
             const title = titles[Math.floor(Math.random() * titles.length)];
 
@@ -628,19 +653,62 @@
             };
         }
 
+        function generateAIBreakfast() {
+            const base = poolBreakfastBases[Math.floor(Math.random() * poolBreakfastBases.length)];
+            const prot = poolBreakfastProts[Math.floor(Math.random() * poolBreakfastProts.length)];
+            
+            return {
+                type: "breakfast",
+                weightFactor: 1.0,
+                title: `Petit-Déj Énergie ${base.name} & ${prot.name}`,
+                desc: "Un réveil calorique et puissant pour optimiser l'anabolisme.",
+                price: base.price + prot.price + 0.5,
+                kcal: 650,
+                ingredients: [
+                    { name: base.name, qty: base.baseQty, unit: base.unit },
+                    { name: prot.name, qty: prot.baseQty, unit: prot.unit },
+                    { name: "Banane", qty: 1, unit: "u" },
+                    { name: "Miel", qty: 15, unit: "g" }
+                ],
+                steps: [
+                    `Préparer la base (${base.name}) selon vos préférences (en bol ou cuisinée).`,
+                    `Associer avec ${prot.name} pour un apport protéique massif dès le matin.`,
+                    `Ajouter la banane coupée en rondelles et napper de miel pour l'énergie.`
+                ]
+            };
+        }
+
         function addAimedMeal(type) {
             let meal;
             if(type === 'breakfast') {
-                meal = JSON.parse(JSON.stringify(breakfastsDB[Math.floor(Math.random() * breakfastsDB.length)]));
+                meal = generateAIBreakfast();
             } else if(type === 'snack') {
-                meal = JSON.parse(JSON.stringify(snacksDB[Math.floor(Math.random() * snacksDB.length)]));
+                meal = JSON.parse(JSON.stringify(poolSnacks[Math.floor(Math.random() * poolSnacks.length)]));
             } else if(type === 'shaker') {
-                meal = JSON.parse(JSON.stringify(shakersDB[Math.floor(Math.random() * shakersDB.length)]));
+                meal = JSON.parse(JSON.stringify(poolShakers[Math.floor(Math.random() * poolShakers.length)]));
             } else {
                 meal = generateAIMainDish();
             }
             meal.type = type;
             currentDayMeals.push(meal);
+            renderMeals();
+        }
+
+        // Fonction "Trouver une autre idée" (Reroll)
+        function rerollMeal(index) {
+            const currentType = currentDayMeals[index].type;
+            let newMeal;
+            if(currentType === 'breakfast') {
+                newMeal = generateAIBreakfast();
+            } else if(currentType === 'snack') {
+                newMeal = JSON.parse(JSON.stringify(poolSnacks[Math.floor(Math.random() * poolSnacks.length)]));
+            } else if(currentType === 'shaker') {
+                newMeal = JSON.parse(JSON.stringify(poolShakers[Math.floor(Math.random() * poolShakers.length)]));
+            } else {
+                newMeal = generateAIMainDish();
+            }
+            newMeal.type = currentType;
+            currentDayMeals[index] = newMeal;
             renderMeals();
         }
 
@@ -689,6 +757,7 @@
                             <span class="meal-title">${icon} ${meal.title}</span>
                             <div>
                                 <button class="btn-small btn-recipe" onclick='openRecipe(${index})'>📖 Recette</button>
+                                <button class="btn-small btn-reroll" onclick="rerollMeal(${index})" title="Changer d'idée">🔄 Autre idée</button>
                                 <button class="btn-small btn-remove" onclick="removeMeal(${index})">❌</button>
                             </div>
                         </div>
@@ -713,7 +782,7 @@
                     stepsList.innerHTML += `<li>${step}</li>`;
                 });
             } else {
-                stepsList.innerHTML = `<li>Mélanger tous les ingredients et consommer frais ou après cuisson rapide.</li>`;
+                stepsList.innerHTML = `<li>Mélanger tous les ingrédients et consommer frais ou après cuisson rapide.</li>`;
             }
             document.getElementById('recipeModal').style.display = 'flex';
         }
