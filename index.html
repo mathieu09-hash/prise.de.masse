@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BulkMaker PRO - IA & Nutrition Avancée</title>
+    <title>BulkMaker PRO - Le Guide Ultime de la Prise de Masse</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -50,7 +50,7 @@
         .tabs {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             margin-top: 15px;
             padding: 0 10px;
             flex-wrap: wrap;
@@ -60,11 +60,12 @@
             background: transparent;
             color: var(--text-dim);
             border: 1px solid var(--border);
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 30px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
+            font-size: 0.85rem;
         }
 
         .tab-btn.active {
@@ -98,10 +99,11 @@
             border-radius: var(--radius);
             padding: 25px;
             box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
         }
 
         .card-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--text-main);
             margin-bottom: 20px;
             display: flex;
@@ -116,7 +118,7 @@
         .form-group { margin-bottom: 15px; }
 
         label { display: block; font-size: 0.9rem; color: var(--text-dim); margin-bottom: 5px; }
-        input, select {
+        input, select, textarea {
             width: 100%;
             padding: 12px;
             background: var(--bg-surface);
@@ -126,7 +128,7 @@
             font-size: 1rem;
             outline: none;
         }
-        input:focus, select:focus { border-color: var(--primary); }
+        input:focus, select:focus, textarea:focus { border-color: var(--primary); }
 
         .btn {
             width: 100%;
@@ -158,9 +160,9 @@
             text-align: center;
         }
         .stat-box.highlight { border-color: var(--accent); box-shadow: 0 0 15px rgba(245, 158, 11, 0.1); }
-        .stat-value { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+        .stat-value { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
         .stat-box.highlight .stat-value { color: var(--accent); }
-        .stat-label { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+        .stat-label { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
 
         .meal-actions-container {
             background: var(--bg-surface);
@@ -172,7 +174,7 @@
         .meal-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
         .action-btn {
             flex: 1;
-            min-width: 110px;
+            min-width: 100px;
             background: transparent;
             color: var(--text-main);
             border: 1px solid var(--border);
@@ -181,6 +183,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: 0.2s;
+            font-size: 0.9rem;
         }
         .action-btn:hover { background: var(--border); color: white; }
         .action-btn.danger { border-color: #ef4444; color: #ef4444; }
@@ -196,14 +199,14 @@
             flex-direction: column;
             gap: 10px;
         }
-        .meal-header { display: flex; justify-content: space-between; align-items: center; }
-        .meal-title { font-size: 1.2rem; font-weight: 800; color: white; display: flex; align-items: center; gap: 10px; }
-        .meal-desc { font-size: 0.9rem; color: var(--text-dim); font-style: italic; }
+        .meal-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .meal-title { font-size: 1.1rem; font-weight: 800; color: white; display: flex; align-items: center; gap: 10px; }
+        .meal-desc { font-size: 0.85rem; color: var(--text-dim); font-style: italic; }
         .meal-macros {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             background: rgba(245, 158, 11, 0.1);
             color: var(--accent);
-            padding: 5px 10px;
+            padding: 4px 10px;
             border-radius: 20px;
             font-weight: 800;
             display: inline-block;
@@ -213,13 +216,13 @@
         .ingredients-list {
             list-style: none;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 8px;
             padding-top: 10px;
             border-top: 1px dashed var(--border);
         }
         .ingredients-list li {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-dim);
             display: flex;
             justify-content: space-between;
@@ -230,7 +233,7 @@
             color: white;
             font-weight: 600;
             background: var(--bg-card);
-            padding: 2px 8px;
+            padding: 2px 6px;
             border-radius: 6px;
         }
 
@@ -238,10 +241,10 @@
             background: transparent;
             border: 1px solid var(--border);
             color: var(--text-dim);
-            padding: 5px 10px;
+            padding: 5px 8px;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
         .btn-small:hover { background: var(--border); color: white; }
         .btn-remove:hover { background: #ef4444; color: white; border-color: #ef4444; }
@@ -249,8 +252,10 @@
         .btn-recipe:hover { background: var(--accent); color: black; }
         .btn-reroll { border-color: var(--primary); color: var(--primary); }
         .btn-reroll:hover { background: var(--primary); color: black; }
+        .btn-fav { border-color: #ec4899; color: #ec4899; }
+        .btn-fav:hover { background: #ec4899; color: white; }
 
-        /* Modal Recette */
+        /* Modal */
         #recipeModal {
             display: none;
             position: fixed;
@@ -280,69 +285,33 @@
             cursor: pointer;
         }
         .close-modal:hover { color: white; }
-        .recipe-steps {
-            margin-top: 15px;
-            padding-left: 20px;
-            color: var(--text-dim);
-        }
+        .recipe-steps { margin-top: 15px; padding-left: 20px; color: var(--text-dim); }
         .recipe-steps li { margin-bottom: 10px; font-size: 0.95rem; }
 
-        /* Courses & Budget */
-        .shopping-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        @media (min-width: 800px) { .shopping-grid { grid-template-columns: 1fr 1fr; } }
-        .shopping-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px;
-            background: var(--bg-surface);
-            border-bottom: 1px solid var(--border);
-        }
-        .shopping-item:last-child { border-bottom: none; }
-        .budget-display {
-            font-size: 1.5rem;
-            color: var(--primary);
-            font-weight: 800;
-            text-align: center;
-            margin: 20px 0;
-            padding: 20px;
-            background: var(--bg-surface);
-            border-radius: var(--radius);
-            border: 2px dashed var(--border);
-        }
+        /* Minuteur muscu */
+        .timer-display { font-size: 3rem; font-weight: 800; color: var(--primary); text-align: center; margin: 15px 0; }
+        .timer-controls { display: flex; gap: 10px; justify-content: center; }
 
-        .water-tracker {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        .glass {
-            width: 40px; height: 50px;
-            border: 2px solid var(--primary);
-            border-radius: 0 0 10px 10px;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-        .glass.full::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0; top: 20%;
-            background: var(--primary);
-            opacity: 0.8;
-        }
+        /* Grille FAQ & Supps */
+        .grid-2 { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 768px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+        
+        faq-item, .faq-box { background: var(--bg-surface); padding: 15px; border-radius: 8px; margin-bottom: 10px; border: 1px solid var(--border); }
+        .faq-q { font-weight: 700; color: var(--primary); margin-bottom: 5px; }
+        .faq-a { font-size: 0.9rem; color: var(--text-dim); }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>⚡ BulkMaker PRO <span style="font-size: 1rem; color: var(--accent);">[Générateur IA Infini]</span></h1>
+        <h1>⚡ BulkMaker PRO <span style="font-size: 0.9rem; color: var(--accent);">[Édition Ultime]</span></h1>
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('repas')">📅 Plan Repas & IA</button>
-            <button class="tab-btn" onclick="switchTab('courses')">🛒 Liste Courses</button>
-            <button class="tab-btn" onclick="switchTab('hydratation')">💧 Hydratation & Supps</button>
+            <button class="tab-btn active" onclick="switchTab('repas')">📅 Repas & IA</button>
+            <button class="tab-btn" onclick="switchTab('favoris')">⭐ Favoris</button>
+            <button class="tab-btn" onclick="switchTab('courses')">🛒 Courses & Budget</button>
+            <button class="tab-btn" onclick="switchTab('hydratation')">💧 Eau & Suivi</button>
+            <button class="tab-btn" onclick="switchTab('outils')">⏱️ Minuteur & Co</button>
+            <button class="tab-btn" onclick="switchTab('guide')">📚 Guide & Supps</button>
         </div>
     </header>
 
@@ -354,7 +323,7 @@
                 
                 <!-- Profil Sidebar -->
                 <div class="card">
-                    <h2 class="card-title">⚙️ Ton Profil</h2>
+                    <h2 class="card-title">⚙️ Ton Profil & Filtres</h2>
                     <form id="profileForm">
                         <div class="form-row">
                             <div class="form-group">
@@ -385,18 +354,26 @@
                                 <option value="1.725">Intense (Sport tous les jours)</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn">Mettre à jour</button>
+                        <div class="form-group">
+                            <label>Régime / Préférence</label>
+                            <select id="dietPref">
+                                <option value="all">Standard (Tout manger)</option>
+                                <option value="nogluten">Sans Gluten</option>
+                                <option value="veggie">Végétarien (Pas de viande)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Mettre à jour les objectifs</button>
                     </form>
                 </div>
 
                 <!-- Main Area -->
                 <div>
                     <div class="card" style="margin-bottom: 20px;">
-                        <h2 class="card-title">🎯 Objectifs Quotidiens</h2>
+                        <h2 class="card-title">🎯 Objectifs Quotidiens Calculés</h2>
                         <div class="stats-grid">
                             <div class="stat-box highlight">
                                 <div class="stat-value" id="targetKcal">2600</div>
-                                <div class="stat-label">Kcal</div>
+                                <div class="stat-label">Kcal Cible</div>
                             </div>
                             <div class="stat-box">
                                 <div class="stat-value" id="targetProtein">130g</div>
@@ -410,15 +387,15 @@
 
                         <!-- Menu IA / Générateur -->
                         <div class="meal-actions-container">
-                            <p style="font-size: 0.9rem; color: var(--text-dim);">L'algorithme IA assemble à l'infini des variantes variées pour ne jamais manger la même chose.</p>
+                            <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 10px;">Générateur combinatoire infini : choisis un type de repas ou génère ta journée entière en 1 clic.</p>
                             <div class="meal-actions">
                                 <button class="action-btn" onclick="addAimedMeal('breakfast')">☕ Petit-Déj</button>
-                                <button class="action-btn" onclick="addAimedMeal('main')">🍽️ Plat (Midi/Soir)</button>
+                                <button class="action-btn" onclick="addAimedMeal('main')">🍽️ Plat</button>
                                 <button class="action-btn" onclick="addAimedMeal('snack')">🥪 Collation</button>
                                 <button class="action-btn" onclick="addAimedMeal('shaker')">🥤 Shaker</button>
                             </div>
                             <div class="meal-actions" style="margin-top: 10px;">
-                                <button class="btn" style="background: var(--accent); color: black;" onclick="generateFullDayAI()">🤖 Générer une journée type par IA</button>
+                                <button class="btn" style="background: var(--accent); color: black; margin-top:0;" onclick="generateFullDayAI()">🤖 Générer une Journée Type Complète</button>
                                 <button class="action-btn danger" onclick="clearMeals()" style="flex: 0 0 auto;">🗑️ Vider</button>
                             </div>
                         </div>
@@ -426,7 +403,7 @@
 
                     <div id="mealsContainer" class="meals-container">
                         <div style="text-align:center; padding: 40px; color: var(--text-dim); background: var(--bg-card); border-radius: var(--radius);">
-                            Clique sur le générateur IA pour afficher tes repas avec leurs recettes.
+                            Ton menu est vide. Clique sur le générateur IA pour commencer.
                         </div>
                     </div>
                 </div>
@@ -437,17 +414,27 @@
         <div id="recipeModal">
             <div class="modal-content">
                 <span class="close-modal" onclick="closeRecipeModal()">&times;</span>
-                <h2 id="modalTitle" style="color: var(--primary); margin-bottom: 10px;">Titre de la Recette</h2>
+                <h2 id="modalTitle" style="color: var(--primary); margin-bottom: 10px;">Titre</h2>
                 <p id="modalDesc" style="color: var(--text-dim); font-style: italic; margin-bottom: 15px;"></p>
                 <h3 style="color: var(--text-main); font-size: 1.1rem; border-bottom: 1px solid var(--border); padding-bottom: 5px;">👨‍🍳 Étapes de préparation :</h3>
                 <ol id="modalSteps" class="recipe-steps"></ol>
             </div>
         </div>
 
-        <!-- ONGLET 2 : COURSES -->
+        <!-- ONGLET 2 : FAVORIS -->
+        <div id="tab-favoris" class="tab-content">
+            <div class="card">
+                <h2 class="card-title">⭐ Tes Repas Favoris Sauvegardés</h2>
+                <div id="favContainer" class="meals-container">
+                    <p style="color:var(--text-dim)">Aucun favori pour l'instant. Clique sur le bouton rose "⭐" sur n'importe quel plat de ton menu pour le sauvegarder ici !</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ONGLET 3 : COURSES -->
         <div id="tab-courses" class="tab-content">
             <div class="card">
-                <h2 class="card-title">🛒 Liste de Courses Intelligente</h2>
+                <h2 class="card-title">🛒 Liste de Courses & Budget Estimé</h2>
                 <div class="form-group" style="max-width: 300px;">
                     <label>Faire les courses pour :</label>
                     <select id="shoppingDays" onchange="generateShoppingList()">
@@ -456,113 +443,148 @@
                         <option value="7">1 semaine complète</option>
                     </select>
                 </div>
-                <div class="budget-display">
-                    Budget Estimé : <span id="budgetEst">0.00</span> €
+                <div style="font-size: 1.3rem; color: var(--primary); font-weight: 800; text-align: center; margin: 20px 0; padding: 15px; background: var(--bg-surface); border-radius: var(--radius); border: 2px dashed var(--border);">
+                    Budget Courses Estimé : <span id="budgetEst">0.00</span> €
                 </div>
-                <div class="shopping-grid" id="shoppingGrid"></div>
+                <div id="shoppingGrid"></div>
             </div>
         </div>
 
-        <!-- ONGLET 3 : HYDRATATION -->
+        <!-- ONGLET 4 : HYDRATATION -->
         <div id="tab-hydratation" class="tab-content">
             <div class="layout-grid">
                 <div class="card">
-                    <h2 class="card-title">💧 Suivi Hydratation</h2>
-                    <p style="color: var(--text-dim);">Objectif : <strong style="color: white; font-size:1.2rem;" id="waterTarget">2.5</strong> Litres</p>
-                    <div class="water-tracker" id="waterTracker"></div>
+                    <h2 class="card-title">💧 Suivi Hydratation Quotidien</h2>
+                    <p style="color: var(--text-dim); margin-bottom: 15px;">Objectif recommandé : <strong style="color: white; font-size:1.1rem;" id="waterTarget">2.5</strong> Litres</p>
+                    <div id="waterTracker" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin: 20px 0;"></div>
                 </div>
                 <div class="card">
-                    <h2 class="card-title">💊 Rappel Suppléments</h2>
-                    <p style="color: var(--text-dim); font-size: 0.95rem;">N'oublie pas ta <strong>Créatine</strong> (5g/jour) et tes <strong>Oméga 3</strong> pour booster ta prise de masse et protéger tes articulations !</p>
+                    <h2 class="card-title">📈 Suivi du Poids (Prise de Masse)</h2>
+                    <div class="form-group">
+                        <label>Enregistrer ton poids du jour (kg)</label>
+                        <div class="form-row">
+                            <input type="number" id="weightLogInput" step="0.1" placeholder="Ex: 61.2">
+                            <button class="btn" style="margin-top:0;" onclick="logWeight()">Ajouter</button>
+                        </div>
+                    </div>
+                    <div id="weightHistoryList" style="margin-top: 15px; font-size:0.9rem; color:var(--text-dim);"></div>
                 </div>
             </div>
         </div>
 
-</div>
+        <!-- ONGLET 5 : OUTILS -->
+        <div id="tab-outils" class="tab-content">
+            <div class="layout-grid">
+                <div class="card">
+                    <h2 class="card-title">⏱️ Minuteur de Repos (Muscu)</h2>
+                    <p style="color: var(--text-dim); text-align: center;">Idéal pour garder un rythme constant entre tes séries à la salle.</p>
+                    <div class="timer-display" id="timerDisplay">01:30</div>
+                    <div class="timer-controls">
+                        <button class="action-btn" onclick="startTimer(90)">1m30</button>
+                        <button class="action-btn" onclick="startTimer(120)">2m00</button>
+                        <button class="action-btn" onclick="startTimer(180)">3m00</button>
+                        <button class="action-btn danger" onclick="stopTimer()">Stop</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <h2 class="card-title">📝 Notes & Journal Personnel</h2>
+                    <textarea id="userNotes" rows="6" placeholder="Écris ici tes objectifs de charges, tes ressentis ou tes idées de recettes..." oninput="saveUserNotes()"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- ONGLET 6 : GUIDE & SUPPS -->
+        <div id="tab-guide" class="tab-content">
+            <div class="card">
+                <h2 class="card-title">📚 Guide Ultime & Suppléments Mass Gain</h2>
+                <div class="grid-2">
+                    <div class="faq-box">
+                        <div class="faq-q">💊 La Créatine (5g/jour)</div>
+                        <div class="faq-a">Essentielle pour augmenter la force et le volume cellulaire. À prendre tous les jours avec de l'eau, peu importe l'horaire.</div>
+                    </div>
+                    <div class="faq-box">
+                        <div class="faq-q">🥛 La Whey Protéine</div>
+                        <div class="faq-a">Une aide pratique pour atteindre son quota de protéines journalier sans se gaver de solidité.</div>
+                    </div>
+                    <div class="faq-box">
+                        <div class="faq-q">🥜 Comment avaler plus de calories ?</div>
+                        <div class="faq-a">Utilise les shakers maison riches en avoine en poudre et beurre de cacahuète : 1000 kcal bues en 2 minutes sans effort de digestion !</div>
+                    </div>
+                    <div class="faq-box">
+                        <div class="faq-q">😴 L'importance du Sommeil</div>
+                        <div class="faq-a">Le muscle ne grossit pas à l'entraînement, il grossit pendant la récupération et la nuit (8h minimum conseillées).</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <script>
-        // === BASES ÉTENDUES DE COMPOSANTS (DIVERSITÉ INFINIE) ===
+        // === BASES DE DONNÉES ÉTENDUES ===
         const poolProteins = [
-            { name: "Blanc de Poulet", unit: "g", baseQty: 150, price: 2.2 },
-            { name: "Steak Haché 5% MG", unit: "g", baseQty: 150, price: 2.8 },
-            { name: "Pavé de Saumon", unit: "g", baseQty: 140, price: 4.5 },
-            { name: "Filet de Dinde", unit: "g", baseQty: 150, price: 2.0 },
-            { name: "Thon en boîte au naturel", unit: "g", baseQty: 130, price: 1.8 },
-            { name: "Steak de Soja / Tofu ferme", unit: "g", baseQty: 160, price: 2.2 },
-            { name: "Œufs entiers", unit: "u", baseQty: 3, price: 1.0 },
-            { name: "Pavé de Cabillaud", unit: "g", baseQty: 160, price: 3.5 },
-            { name: "Steak de Haché Végétal", unit: "g", baseQty: 150, price: 3.0 }
+            { name: "Blanc de Poulet", unit: "g", baseQty: 150, price: 2.2, type: "meat" },
+            { name: "Steak Haché 5% MG", unit: "g", baseQty: 150, price: 2.8, type: "meat" },
+            { name: "Pavé de Saumon", unit: "g", baseQty: 140, price: 4.5, type: "fish" },
+            { name: "Filet de Dinde", unit: "g", baseQty: 150, price: 2.0, type: "meat" },
+            { name: "Thon en boîte", unit: "g", baseQty: 130, price: 1.8, type: "fish" },
+            { name: "Tofu ferme", unit: "g", baseQty: 160, price: 2.2, type: "veggie" },
+            { name: "Œufs entiers", unit: "u", baseQty: 3, price: 1.0, type: "veggie" }
         ];
 
         const poolCarbs = [
-            { name: "Riz Basmati", unit: "g", baseQty: 110, price: 0.4 },
-            { name: "Pâtes Complètes", unit: "g", baseQty: 120, price: 0.4 },
-            { name: "Patates Douces", unit: "g", baseQty: 250, price: 1.2 },
-            { name: "Quinoa", unit: "g", baseQty: 100, price: 1.0 },
-            { name: "Semoule de Blé", unit: "g", baseQty: 110, price: 0.4 },
-            { name: "Gnocchis poêlés", unit: "g", baseQty: 200, price: 1.5 },
-            { name: "Riz Complet", unit: "g", baseQty: 110, price: 0.5 },
-            { name: "Purée de pommes de terre maison", unit: "g", baseQty: 250, price: 0.8 }
+            { name: "Riz Basmati", unit: "g", baseQty: 110, price: 0.4, gluten: false },
+            { name: "Pâtes Complètes", unit: "g", baseQty: 120, price: 0.4, gluten: true },
+            { name: "Patates Douces", unit: "g", baseQty: 250, price: 1.2, gluten: false },
+            { name: "Quinoa", unit: "g", baseQty: 100, price: 1.0, gluten: false },
+            { name: "Semoule de Blé", unit: "g", baseQty: 110, price: 0.4, gluten: true },
+            { name: "Riz Complet", unit: "g", baseQty: 110, price: 0.5, gluten: false }
         ];
 
         const poolVeggies = [
             { name: "Brocolis vapeur", unit: "g", baseQty: 130, price: 1.0 },
             { name: "Haricots verts", unit: "g", baseQty: 130, price: 0.9 },
-            { name: "Poêlée de poivrons & oignons", unit: "g", baseQty: 120, price: 1.1 },
-            { name: "Épinards frais", unit: "g", baseQty: 100, price: 1.2 },
-            { name: "Courgettes poêlées aux herbes", unit: "g", baseQty: 150, price: 1.0 },
-            { name: "Carottes fondantes", unit: "g", baseQty: 130, price: 0.8 }
+            { name: "Poêlée de poivrons", unit: "g", baseQty: 120, price: 1.1 },
+            { name: "Épinards frais", unit: "g", baseQty: 100, price: 1.2 }
         ];
 
         const poolSaucesFats = [
             { name: "Huile d'olive", unit: "ml", baseQty: 15, price: 0.3 },
             { name: "Lait de coco", unit: "ml", baseQty: 80, price: 0.8 },
-            { name: "Crème fraîche épaisse", unit: "g", baseQty: 40, price: 0.6 },
-            { name: "Sauce Soja & Cacahuètes", unit: "g", baseQty: 20, price: 0.5 },
-            { name: "Huile de Colza", unit: "ml", baseQty: 15, price: 0.2 },
             { name: "Beurre de cacahuète", unit: "g", baseQty: 20, price: 0.4 }
         ];
 
         const poolBreakfastBases = [
-            { name: "Flocons d'avoine", unit: "g", baseQty: 80, price: 0.3 },
-            { name: "Muesli croustillant chocolat", unit: "g", baseQty: 80, price: 0.6 },
-            { name: "Farine d'avoine", unit: "g", baseQty: 90, price: 0.4 },
-            { name: "Pain de mie complet", unit: "g", baseQty: 100, price: 0.5 }
+            { name: "Flocons d'avoine", unit: "g", baseQty: 80, price: 0.3, gluten: true },
+            { name: "Muesli croustillant", unit: "g", baseQty: 80, price: 0.6, gluten: true },
+            { name: "Riz soufflé (Sans gluten)", unit: "g", baseQty: 70, price: 0.7, gluten: false }
         ];
 
         const poolBreakfastProts = [
-            { name: "Œufs entiers", unit: "u", baseQty: 3, price: 1.0 },
-            { name: "Fromage Blanc 0%", unit: "g", baseQty: 250, price: 1.2 },
-            { name: "Skyr nature", unit: "g", baseQty: 250, price: 1.5 },
-            { name: "Whey protéine en poudre", unit: "g", baseQty: 30, price: 1.0 }
+            { name: "Œufs entiers", unit: "u", baseQty: 3, price: 1.0, veggie: true },
+            { name: "Fromage Blanc 0%", unit: "g", baseQty: 250, price: 1.2, veggie: true },
+            { name: "Skyr nature", unit: "g", baseQty: 250, price: 1.5, veggie: true },
+            { name: "Whey protéine", unit: "g", baseQty: 30, price: 1.0, veggie: true }
         ];
 
         const poolSnacks = [
-            { title: "Bowl Skyr, Amandes & Chocolat", desc: "Riche en protéines lentes et en bonnes graisses.", price: 2.2, kcal: 450,
-              ingredients: [{name: "Skyr nature", qty: 250, unit: "g"}, {name: "Amandes", qty: 35, unit: "g"}, {name: "Chocolat noir 70%", qty: 20, unit: "g"}],
-              steps: ["Verser le Skyr dans un bol.", "Ajouter les amandes concassées et les carrés de chocolat noir.", "Déguster bien frais."] },
-            { title: "Tartines XXL Beurre de Cacahuète & Banane", desc: "L'arme secrète calorique pour avaler des calories facilement.", price: 1.8, kcal: 500,
-              ingredients: [{name: "Pain de mie complet", qty: 100, unit: "g"}, {name: "Beurre de cacahuète", qty: 50, unit: "g"}, {name: "Banane", qty: 1, unit: "u"}],
-              steps: ["Faire toaster les tranches de pain de mie.", "Étaler généreusement le beurre de cacahuète.", "Disposer des rondelles de bananes par-dessus."] },
-            { title: "Smoothie Bowl Énergétique Fruits Rouges", desc: "Frais, vitaminé et dense en glucides propres.", price: 2.5, kcal: 420,
-              ingredients: [{name: "Lait entier", qty: 200, unit: "ml"}, {name: "Flocons d'avoine", qty: 50, unit: "g"}, {name: "Fruits rouges surgelés", qty: 100, unit: "g"}, {name: "Beurre de cacahuète", qty: 20, unit: "g"}],
-              steps: ["Mixer tous les ingrédients dans un blender puissant jusqu'à texture onctueuse.", "Verser dans un bol et ajouter quelques fruits par-dessus."] },
-            { title: "Porridge Express Noix & Miel", desc: "Idéal pour une collation de pré ou post-entraînement.", price: 1.5, kcal: 460,
-              ingredients: [{name: "Flocons d'avoine", qty: 70, unit: "g"}, {name: "Lait entier", qty: 250, unit: "ml"}, {name: "Miel", qty: 20, unit: "g"}, {name: "Cerneaux de noix", qty: 20, unit: "g"}],
-              steps: ["Chauffer le lait et les flocons d'avoine au micro-ondes pendant 2 minutes.", "Mélanger vigoureusement.", "Ajouter le miel et les noix concassées."] }
+            { title: "Bowl Skyr & Amandes", desc: "Riche en protéines lentes.", price: 2.2, kcal: 450, gluten: false, veggie: true,
+              ingredients: [{name: "Skyr nature", qty: 250, unit: "g"}, {name: "Amandes", qty: 35, unit: "g"}, {name: "Chocolat noir", qty: 20, unit: "g"}],
+              steps: ["Verser le Skyr dans un bol.", "Ajouter les amandes et le chocolat."] },
+            { title: "Tartines Beurre de Cacahuète & Banane", desc: "L'arme secrète calorique.", price: 1.8, kcal: 500, gluten: false, veggie: true,
+              ingredients: [{name: "Pain complet", qty: 100, unit: "g"}, {name: "Beurre de cacahuète", qty: 50, unit: "g"}, {name: "Banane", qty: 1, unit: "u"}],
+              steps: ["Toaster le pain.", "Étaler le beurre de cacahuète et ajouter la banane."] }
         ];
 
         const poolShakers = [
-            { title: "Shaker Gainer Maison Ultra-Mass", desc: "1000 kcal liquides avalées en 2 minutes chrono.", price: 1.8, kcal: 950,
-              ingredients: [{name: "Lait entier", qty: 400, unit: "ml"}, {name: "Avoine en poudre", qty: 100, unit: "g"}, {name: "Beurre de cacahuète", qty: 40, unit: "g"}, {name: "Whey protéine", qty: 30, unit: "g"}],
-              steps: ["Mettre le liquide d'abord dans le shaker ou le blender.", "Ajouter la poudre d'avoine, la whey et le beurre de cacahuète.", "Mixer vigoureusement pendant 30 secondes."] },
-            { title: "Shaker Chocolat & Beurre d'Amande", desc: "Alternative onctueuse et riche en lipides de qualité.", price: 2.1, kcal: 880,
-              ingredients: [{name: "Lait entier", qty: 400, unit: "ml"}, {name: "Flocons d'avoine", qty: 90, unit: "g"}, {name: "Purée d'amande", qty: 35, unit: "g"}, {name: "Chocolat en poudre (ou cacao)", qty: 20, unit: "g"}],
-              steps: ["Verser le lait dans le mixeur.", "Ajouter l'avoine, la purée d'amande et le cacao.", "Mixer jusqu'à l'obtention d'un mélange parfaitement homogène."] }
+            { title: "Shaker Gainer Mass", desc: "1000 kcal liquides en 2 min.", price: 1.8, kcal: 950, gluten: false, veggie: true,
+              ingredients: [{name: "Lait entier", qty: 400, unit: "ml"}, {name: "Avoine en poudre", qty: 100, unit: "g"}, {name: "Beurre de cacahuète", qty: 40, unit: "g"}, {name: "Whey", qty: 30, unit: "g"}],
+              steps: ["Mettre le liquide dans le shaker.", "Ajouter les poudres et mixer."] }
         ];
 
         let currentUser = { tdee: 2600, protein: 130, carbs: 350, weight: 60 };
         let currentDayMeals = [];
+        let favoritesMeals = JSON.parse(localStorage.getItem('bm_favs')) || [];
 
         window.onload = () => {
             if(localStorage.getItem('bm_weight')) {
@@ -572,7 +594,12 @@
                 document.getElementById('age').value = localStorage.getItem('bm_age');
                 document.getElementById('activity').value = localStorage.getItem('bm_activity');
             }
+            if(localStorage.getItem('bm_notes')) {
+                document.getElementById('userNotes').value = localStorage.getItem('bm_notes');
+            }
             calculateMacros();
+            renderFavorites();
+            renderWeightHistory();
         };
 
         function switchTab(tabId) {
@@ -592,7 +619,7 @@
             localStorage.setItem('bm_age', document.getElementById('age').value);
             localStorage.setItem('bm_activity', document.getElementById('activity').value);
             if(currentDayMeals.length > 0) renderMeals();
-            alert("Profil mis à jour !");
+            alert("Profil et objectifs mis à jour !");
         });
 
         function calculateMacros() {
@@ -601,7 +628,7 @@
             const age = parseInt(document.getElementById('age').value);
             const activity = parseFloat(document.getElementById('activity').value);
             let bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
-            const tdee = Math.round((bmr * activity) + 500); // Surplus prise de masse
+            const tdee = Math.round((bmr * activity) + 500);
             
             currentUser.tdee = tdee;
             currentUser.weight = weight;
@@ -615,27 +642,29 @@
             setupWaterTracker(weight);
         }
 
-        // === GÉNÉRATEURS IA COMBINATOIRES INFINIS ===
+        // === FILTRES ET GÉNÉRATEURS IA ===
+        function getFilteredPool(pool, typeKey) {
+            const pref = document.getElementById('dietPref').value;
+            return pool.filter(item => {
+                if(pref === 'nogluten' && item.gluten === false) return false;
+                if(pref === 'veggie' && (item.type === 'meat' || item.type === 'fish')) return false;
+                return true;
+            });
+        }
+
         function generateAIMainDish() {
-            const prot = poolProteins[Math.floor(Math.random() * poolProteins.length)];
-            const carb = poolCarbs[Math.floor(Math.random() * poolCarbs.length)];
+            const protList = getFilteredPool(poolProteins);
+            const carbList = getFilteredPool(poolCarbs);
+            const prot = protList[Math.floor(Math.random() * protList.length)] || poolProteins[0];
+            const carb = carbList[Math.floor(Math.random() * carbList.length)] || poolCarbs[0];
             const veg = poolVeggies[Math.floor(Math.random() * poolVeggies.length)];
             const fat = poolSaucesFats[Math.floor(Math.random() * poolSaucesFats.length)];
-
-            const titles = [
-                `Poêlée ${prot.name} & ${carb.name} façon Chef`,
-                `Bowl Énergétique ${prot.name} avec ${veg.name}`,
-                `Assiette Mass ${carb.name}, ${prot.name} & ${fat.name}`,
-                `Mix Muscu : ${prot.name} et ses ${carb.name}`,
-                `Assiette Gourmande ${prot.name} et ${carb.name}`
-            ];
-            const title = titles[Math.floor(Math.random() * titles.length)];
 
             return {
                 type: "main",
                 weightFactor: 1.5,
-                title: title,
-                desc: "Plat généré par l'IA combinant des macronutriments parfaits pour la prise de masse.",
+                title: `Poêlée ${prot.name} & ${carb.name}`,
+                desc: "Plat riche en macronutriments propres pour la prise de masse.",
                 price: prot.price + carb.price + veg.price + fat.price,
                 kcal: 800,
                 ingredients: [
@@ -645,23 +674,23 @@
                     { name: fat.name, qty: fat.baseQty, unit: fat.unit }
                 ],
                 steps: [
-                    `Faire cuire le ${carb.name} dans de l'eau bouillante salée selon le temps indiqué.`,
-                    `Dans une poêle, faire chauffer le ${fat.name} et faire saisir le ${prot.name} jusqu'à dorure complète.`,
-                    `Faire réchauffer les ${veg.name} à côté ou directement dans la poêle.`,
-                    `Dresser le tout dans une grande assiette et assaisonner selon vos goûts.`
+                    `Faire cuire le ${carb.name} dans de l'eau bouillante salée.`,
+                    `Faire saisir le ${prot.name} dans une poêle avec le ${fat.name}.`,
+                    `Ajouter les ${veg.name} et mélanger le tout.`
                 ]
             };
         }
 
         function generateAIBreakfast() {
-            const base = poolBreakfastBases[Math.floor(Math.random() * poolBreakfastBases.length)];
+            const baseList = getFilteredPool(poolBreakfastBases);
+            const base = baseList[Math.floor(Math.random() * baseList.length)] || poolBreakfastBases[0];
             const prot = poolBreakfastProts[Math.floor(Math.random() * poolBreakfastProts.length)];
             
             return {
                 type: "breakfast",
                 weightFactor: 1.0,
-                title: `Petit-Déj Énergie ${base.name} & ${prot.name}`,
-                desc: "Un réveil calorique et puissant pour optimiser l'anabolisme.",
+                title: `Petit-Déj Énergie ${base.name}`,
+                desc: "Un réveil puissant pour l'anabolisme.",
                 price: base.price + prot.price + 0.5,
                 kcal: 650,
                 ingredients: [
@@ -670,43 +699,30 @@
                     { name: "Banane", qty: 1, unit: "u" },
                     { name: "Miel", qty: 15, unit: "g" }
                 ],
-                steps: [
-                    `Préparer la base (${base.name}) selon vos préférences (en bol ou cuisinée).`,
-                    `Associer avec ${prot.name} pour un apport protéique massif dès le matin.`,
-                    `Ajouter la banane coupée en rondelles et napper de miel pour l'énergie.`
-                ]
+                steps: [`Préparer la base et associer avec ${prot.name}. Ajouter la banane et le miel.`]
             };
         }
 
         function addAimedMeal(type) {
             let meal;
-            if(type === 'breakfast') {
-                meal = generateAIBreakfast();
-            } else if(type === 'snack') {
-                meal = JSON.parse(JSON.stringify(poolSnacks[Math.floor(Math.random() * poolSnacks.length)]));
-            } else if(type === 'shaker') {
-                meal = JSON.parse(JSON.stringify(poolShakers[Math.floor(Math.random() * poolShakers.length)]));
-            } else {
-                meal = generateAIMainDish();
-            }
+            if(type === 'breakfast') meal = generateAIBreakfast();
+            else if(type === 'snack') meal = JSON.parse(JSON.stringify(poolSnacks[Math.floor(Math.random() * poolSnacks.length)]));
+            else if(type === 'shaker') meal = JSON.parse(JSON.stringify(poolShakers[Math.floor(Math.random() * poolShakers.length)]));
+            else meal = generateAIMainDish();
+            
             meal.type = type;
             currentDayMeals.push(meal);
             renderMeals();
         }
 
-        // Fonction "Trouver une autre idée" (Reroll)
         function rerollMeal(index) {
             const currentType = currentDayMeals[index].type;
             let newMeal;
-            if(currentType === 'breakfast') {
-                newMeal = generateAIBreakfast();
-            } else if(currentType === 'snack') {
-                newMeal = JSON.parse(JSON.stringify(poolSnacks[Math.floor(Math.random() * poolSnacks.length)]));
-            } else if(currentType === 'shaker') {
-                newMeal = JSON.parse(JSON.stringify(poolShakers[Math.floor(Math.random() * poolShakers.length)]));
-            } else {
-                newMeal = generateAIMainDish();
-            }
+            if(currentType === 'breakfast') newMeal = generateAIBreakfast();
+            else if(currentType === 'snack') newMeal = JSON.parse(JSON.stringify(poolSnacks[Math.floor(Math.random() * poolSnacks.length)]));
+            else if(currentType === 'shaker') newMeal = JSON.parse(JSON.stringify(poolShakers[Math.floor(Math.random() * poolShakers.length)]));
+            else newMeal = generateAIMainDish();
+            
             newMeal.type = currentType;
             currentDayMeals[index] = newMeal;
             renderMeals();
@@ -727,7 +743,7 @@
         function renderMeals() {
             const container = document.getElementById('mealsContainer');
             if(currentDayMeals.length === 0) {
-                container.innerHTML = '<div style="text-align:center; padding: 40px; color: var(--text-dim); background: var(--bg-card); border-radius: var(--radius);">Ton menu est vide. Utilise les boutons IA pour générer tes repas.</div>';
+                container.innerHTML = '<div style="text-align:center; padding: 40px; color: var(--text-dim); background: var(--bg-card); border-radius: var(--radius);">Ton menu est vide. Utilise les boutons IA.</div>';
                 return;
             }
 
@@ -746,7 +762,6 @@
                     ingsHTML += `<li>${ing.name} <span class="qty">${fQty} ${ing.unit}</span></li>`;
                     ing.calcQty = fQty;
                 });
-
                 meal.calcPrice = (meal.price || 3) * mult;
 
                 let icon = meal.type === 'breakfast' ? '☕' : (meal.type === 'main' ? '🍽️' : (meal.type === 'shaker' ? '🥤' : '🥪'));
@@ -757,7 +772,8 @@
                             <span class="meal-title">${icon} ${meal.title}</span>
                             <div>
                                 <button class="btn-small btn-recipe" onclick='openRecipe(${index})'>📖 Recette</button>
-                                <button class="btn-small btn-reroll" onclick="rerollMeal(${index})" title="Changer d'idée">🔄 Autre idée</button>
+                                <button class="btn-small btn-fav" onclick='saveToFav(${index})' title="Mettre en favori">⭐</button>
+                                <button class="btn-small btn-reroll" onclick="rerollMeal(${index})">🔄 Changer</button>
                                 <button class="btn-small btn-remove" onclick="removeMeal(${index})">❌</button>
                             </div>
                         </div>
@@ -769,27 +785,52 @@
             });
         }
 
-        // === MODAL RECETTE ===
+        // === FAVORIS ===
+        function saveToFav(index) {
+            const meal = currentDayMeals[index];
+            favoritesMeals.push(meal);
+            localStorage.setItem('bm_favs', JSON.stringify(favoritesMeals));
+            renderFavorites();
+            alert("Repas ajouté aux favoris !");
+        }
+
+        function renderFavorites() {
+            const container = document.getElementById('favContainer');
+            if(favoritesMeals.length === 0) {
+                container.innerHTML = '<p style="color:var(--text-dim)">Aucun favori enregistré.</p>';
+                return;
+            }
+            container.innerHTML = '';
+            favoritesMeals.forEach((meal, idx) => {
+                container.innerHTML += `
+                    <div class="meal-card">
+                        <div class="meal-header">
+                            <span class="meal-title">⭐ ${meal.title}</span>
+                            <button class="btn-small btn-remove" onclick="removeFav(${idx})">❌ Supprimer</button>
+                        </div>
+                        <div class="meal-desc">${meal.desc}</div>
+                    </div>
+                `;
+            });
+        }
+
+        function removeFav(idx) {
+            favoritesMeals.splice(idx, 1);
+            localStorage.setItem('bm_favs', JSON.stringify(favoritesMeals));
+            renderFavorites();
+        }
+
+        // === MODAL ===
         function openRecipe(index) {
             const meal = currentDayMeals[index];
             document.getElementById('modalTitle').innerText = meal.title;
             document.getElementById('modalDesc').innerText = meal.desc;
-            
             const stepsList = document.getElementById('modalSteps');
             stepsList.innerHTML = '';
-            if(meal.steps && meal.steps.length > 0) {
-                meal.steps.forEach(step => {
-                    stepsList.innerHTML += `<li>${step}</li>`;
-                });
-            } else {
-                stepsList.innerHTML = `<li>Mélanger tous les ingrédients et consommer frais ou après cuisson rapide.</li>`;
-            }
+            if(meal.steps) meal.steps.forEach(s => stepsList.innerHTML += `<li>${s}</li>`);
             document.getElementById('recipeModal').style.display = 'flex';
         }
-
-        function closeRecipeModal() {
-            document.getElementById('recipeModal').style.display = 'none';
-        }
+        function closeRecipeModal() { document.getElementById('recipeModal').style.display = 'none'; }
 
         // === COURSES ===
         function generateShoppingList() {
@@ -798,10 +839,8 @@
                 document.getElementById('budgetEst').innerText = '0.00';
                 return;
             }
-
             const days = parseInt(document.getElementById('shoppingDays').value);
-            let groceryMap = {};
-            let totalBudget = 0;
+            let groceryMap = {}, totalBudget = 0;
 
             currentDayMeals.forEach(meal => {
                 totalBudget += (meal.calcPrice || 2.5);
@@ -813,23 +852,18 @@
             });
 
             document.getElementById('budgetEst').innerText = (totalBudget * days).toFixed(2);
-
             let gridHTML = '<div style="background: var(--bg-card); padding: 15px; border-radius: 8px;">';
             for (const [name, data] of Object.entries(groceryMap)) {
-                gridHTML += `
-                    <div class="shopping-item">
-                        <label style="display:flex; align-items:center; gap:10px; cursor:pointer; color:white; font-size:1rem; margin:0;">
-                            <input type="checkbox" style="width:20px; height:20px;"> ${name}
-                        </label>
-                        <span style="color:var(--primary); font-weight:bold;">${data.qty} ${data.unit}</span>
-                    </div>
-                `;
+                gridHTML += `<div style="display:flex; justify-content:space-between; padding:10px; border-bottom:1px solid var(--border);">
+                    <label style="color:white; cursor:pointer;"><input type="checkbox" style="margin-right:10px;"> ${name}</label>
+                    <span style="color:var(--primary); font-weight:bold;">${data.qty} ${data.unit}</span>
+                </div>`;
             }
             gridHTML += '</div>';
             document.getElementById('shoppingGrid').innerHTML = gridHTML;
         }
 
-        // === HYDRATATION ===
+        // === HYDRATATION & POIDS ===
         function setupWaterTracker(weight) {
             const glasses = Math.ceil((weight * 0.04 * 1000) / 250);
             const tracker = document.getElementById('waterTracker');
@@ -837,9 +871,48 @@
             for(let i=0; i<glasses; i++) {
                 const g = document.createElement('div');
                 g.className = 'glass';
-                g.onclick = function() { this.classList.toggle('full'); };
+                g.style.width = '35px'; g.style.height = '45px'; g.style.border = '2px solid var(--primary)';
+                g.style.borderRadius = '0 0 8px 8px'; g.style.cursor = 'pointer';
+                g.onclick = function() { this.style.background = this.style.background ? '' : 'var(--primary)'; };
                 tracker.appendChild(g);
             }
+        }
+
+        function logWeight() {
+            const val = document.getElementById('weightLogInput').value;
+            if(!val) return;
+            let history = JSON.parse(localStorage.getItem('bm_weight_hist')) || [];
+            history.push({ date: new Date().toLocaleDateString(), weight: val });
+            localStorage.setItem('bm_weight_hist', JSON.stringify(history));
+            renderWeightHistory();
+            document.getElementById('weightLogInput').value = '';
+        }
+
+        function renderWeightHistory() {
+            let history = JSON.parse(localStorage.getItem('bm_weight_hist')) || [];
+            const list = document.getElementById('weightHistoryList');
+            if(history.length === 0) { list.innerHTML = "Aucun historique de poids."; return; }
+            list.innerHTML = history.map(h => `<div>📅 ${h.date} : <strong>${h.weight} kg</strong></div>`).join('');
+        }
+
+        // === MINUTEUR & NOTES ===
+        let timerInterval;
+        function startTimer(seconds) {
+            clearInterval(timerInterval);
+            let timeLeft = seconds;
+            const display = document.getElementById('timerDisplay');
+            timerInterval = setInterval(() => {
+                let m = Math.floor(timeLeft / 60);
+                let s = timeLeft % 60;
+                display.innerText = `${m < 10 ? '0':''}${m}:${s < 10 ? '0':''}${s}`;
+                if(timeLeft <= 0) { clearInterval(timerInterval); alert("Temps de repos terminé ! À ton tour !"); }
+                timeLeft--;
+            }, 1000);
+        }
+        function stopTimer() { clearInterval(timerInterval); document.getElementById('timerDisplay').innerText = "01:30"; }
+
+        function saveUserNotes() {
+            localStorage.setItem('bm_notes', document.getElementById('userNotes').value);
         }
     </script>
 </body>
